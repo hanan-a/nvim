@@ -1,0 +1,8 @@
+require('settings')
+require('colorschemes.nightfox')
+require('packer-config')
+require('lsp-zero-config')
+require('compleation')
+require('nvim-tree-config')
+require('mappings')
+require('lua-line-config')
