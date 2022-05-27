@@ -30,7 +30,8 @@ return require('packer').startup(function()
     use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        'lewis6991/spellsitter.nvim',
     }
     use {
         'kyazdani42/nvim-tree.lua',
