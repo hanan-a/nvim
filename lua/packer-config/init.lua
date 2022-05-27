@@ -2,6 +2,9 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use "EdenEast/nightfox.nvim"
     use 'kyazdani42/nvim-web-devicons'
+    --use 'Mofiqul/dracula.nvim'
+    use 'airblade/vim-gitgutter'
+    use 'tpope/vim-fugitive'
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
