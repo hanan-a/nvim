@@ -5,6 +5,7 @@ return require('packer').startup(function()
     --use 'Mofiqul/dracula.nvim'
     use 'airblade/vim-gitgutter'
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-surround'
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
