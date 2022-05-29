@@ -9,7 +9,6 @@ return require('packer').startup(function()
 
     use 'airblade/vim-gitgutter'
     use 'tpope/vim-fugitive'
-    use 'f-person/git-blame.nvim'
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
     use({
@@ -72,9 +71,5 @@ return require('packer').startup(function()
         -- you can configure Hop the way you like here; see :h hop-config
         require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       end
-    }
-    use {
-      "SmiteshP/nvim-gps",
-      requires = "nvim-treesitter/nvim-treesitter"
     }
 end)
