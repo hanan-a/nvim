@@ -12,6 +12,7 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
     use 'editorconfig/editorconfig-vim'
+    use "Pocco81/AutoSave.nvim"
     use({
       "nvim-telescope/telescope.nvim",
       requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
