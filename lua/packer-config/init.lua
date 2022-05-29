@@ -11,7 +11,6 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
-    use 'lewis6991/gitsigns.nvim'
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
