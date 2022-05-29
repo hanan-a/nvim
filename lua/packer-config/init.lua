@@ -11,6 +11,7 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
+    use 'editorconfig/editorconfig-vim'
     use({
       "nvim-telescope/telescope.nvim",
       requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
