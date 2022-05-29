@@ -9,6 +9,7 @@ return require('packer').startup(function()
 
     use 'airblade/vim-gitgutter'
     use 'tpope/vim-fugitive'
+    use 'f-person/git-blame.nvim'
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
     use({
@@ -52,12 +53,6 @@ return require('packer').startup(function()
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
-    }
-    use {
-  	    'nvim-telescope/telescope.nvim',
-  	    requires = { 
-	    	{'nvim-lua/plenary.nvim'} 
-	    }
     }
     use {
       'nvim-lualine/lualine.nvim',
