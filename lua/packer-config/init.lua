@@ -1,12 +1,17 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use "EdenEast/nightfox.nvim"
     use 'kyazdani42/nvim-web-devicons'
+
+    -- Theme
+    use "EdenEast/nightfox.nvim"
     --use 'Mofiqul/dracula.nvim'
+    --use 'marko-cerovac/material.nvim'
+
     use 'airblade/vim-gitgutter'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
+    use 'lewis6991/gitsigns.nvim'
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
@@ -27,7 +32,9 @@ return require('packer').startup(function()
           {'rafamadriz/friendly-snippets'},
       }
     }
-    use "hrsh7th/nvim-cmp" --completion
+    --completion
+    use "hrsh7th/nvim-cmp" 
+    use {'neoclide/coc.nvim', branch = 'release'}
     use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -55,6 +62,14 @@ return require('packer').startup(function()
       requires = { 'kyazdani42/nvim-web-devicons' },
       config = function ()
         require'alpha'.setup(require'alpha.themes.startify'.config)
+      end
+    }
+    use {
+      'phaazon/hop.nvim',
+      branch = 'v1', -- optional but strongly recommended
+      config = function()
+        -- you can configure Hop the way you like here; see :h hop-config
+        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
       end
     }
 end)
