@@ -1,6 +1,6 @@
 require('nightfox').setup({
     options = {
-        --transparent = true
+        transparent = true
     }
 })
-vim.cmd("colorscheme duskfox")
+vim.cmd("colorscheme nightfox")
