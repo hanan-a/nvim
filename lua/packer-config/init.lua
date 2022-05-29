@@ -13,6 +13,7 @@ return require('packer').startup(function()
     use 'mfussenegger/nvim-dap'
     use 'editorconfig/editorconfig-vim'
     use "Pocco81/AutoSave.nvim"
+    use 'booperlv/nvim-gomove'
     use({
       "nvim-telescope/telescope.nvim",
       requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
@@ -42,7 +43,7 @@ return require('packer').startup(function()
     }
     --completion
     use "hrsh7th/nvim-cmp" 
-    use {'neoclide/coc.nvim', branch = 'release'}
+--    use {'neoclide/coc.nvim', branch = 'release'}
     use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
     use {
         'nvim-treesitter/nvim-treesitter',
