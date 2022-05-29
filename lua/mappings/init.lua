@@ -19,3 +19,5 @@ map('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.
 map('n', '<leader>n', "<cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>", {})
 map('v', '<leader>n', "<cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END })<cr>", {})
 map('o', '<leader>n', "<cmd> lua require'hop'.hint_words({ hint_position = require'hop.hint'.HintPosition.END, inclusive_jump = true })<cr>", {})
+
+map('n', '<leader>lg', ':LazyGit<CR>', opts)
