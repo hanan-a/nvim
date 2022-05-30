@@ -3,6 +3,7 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
 map('i', ';;', '<Esc>', opts)
+map('n', '<leader><S-r>', ':luafile %<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
