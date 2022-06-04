@@ -1,1 +1,1 @@
-require('git-signs')
+require'git/git-signs-config'

@@ -1,5 +1,3 @@
-require('null-ls')
-
 local cmp = require'cmp'
 
 cmp.setup({
