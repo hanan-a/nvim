@@ -59,6 +59,10 @@ return require('packer').startup(function()
         'lewis6991/spellsitter.nvim',
     }
     use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+    }
+    use {
         'kyazdani42/nvim-tree.lua',
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
