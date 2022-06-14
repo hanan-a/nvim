@@ -46,7 +46,9 @@ return require('packer').startup(function()
           {'rafamadriz/friendly-snippets'},
       }
     }
-    --completion
+    use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets'
+   --completion
     use "hrsh7th/nvim-cmp" 
 --    use {'neoclide/coc.nvim', branch = 'release'}
     --Tabnine windows

@@ -70,3 +70,5 @@ cmp.setup.cmdline(':', {
 -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
 --  capabilities = capabilities
 --}
+--
+require("luasnip.loaders.from_vscode").lazy_load()
