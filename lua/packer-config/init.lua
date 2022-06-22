@@ -17,7 +17,6 @@ return require('packer').startup(function()
     use 'editorconfig/editorconfig-vim'
     use "Pocco81/AutoSave.nvim"
     use 'booperlv/nvim-gomove'
-    use 'github/copilot.vim'
     use({
       "nvim-telescope/telescope.nvim",
       requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
