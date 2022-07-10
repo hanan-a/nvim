@@ -24,6 +24,7 @@ return require('packer').startup(function()
         require("telescope").load_extension("lazygit")
       end,
     })
+    use { 'nvim-telescope/telescope-project.nvim' }
     use 'jose-elias-alvarez/null-ls.nvim'
     use {
       'VonHeikemen/lsp-zero.nvim',

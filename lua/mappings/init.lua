@@ -9,9 +9,10 @@ map('n', '<leader>t', ':tabnew<CR>', opts)
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 map('n', '<leader>z', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
-map('n', '<leader>f', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
+map('n', '<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
+map('n', '<leader>fp', ':Telescope project<CR>', opts)
 
 map('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
 map('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
