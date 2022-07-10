@@ -97,4 +97,5 @@ return require('packer').startup(function()
     }
     -- Tabline
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use ({ 'projekt0n/github-nvim-theme' })
 end)
