@@ -96,6 +96,11 @@ return require('packer').startup(function()
         {"nvim-treesitter/nvim-treesitter"}
       }
     }
+    use {
+      'filipdutescu/renamer.nvim',
+      branch = 'master',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
     -- Tabline
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
     use ({ 'projekt0n/github-nvim-theme' })

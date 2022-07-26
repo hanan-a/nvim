@@ -26,6 +26,9 @@ map('o', '<leader>n', "<cmd> lua require'hop'.hint_words({ hint_position = requi
 
 map('n', '<leader>lg', ':LazyGit<CR>', opts)
 
+map('n', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+map('v', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
+
 map( "n", "<S-h>", "<Plug>GoNSMLeft", {} )
 map( "n", "<S-j>", "<Plug>GoNSMDown", {} )
 map( "n", "<S-k>", "<Plug>GoNSMUp", {} )
