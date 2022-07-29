@@ -8,6 +8,8 @@ map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
+map('t', '<ESC>', '<C-\\><C-n>', opts)
+
 map('n', '<leader>z', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 map('n', '<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
