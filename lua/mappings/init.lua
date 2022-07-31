@@ -8,6 +8,11 @@ map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
+-- Copy to clipboard
+map('n', '<leader>y', '"+y', opts)
+map('v', '<leader>y', '"+y', opts)
+
+-- Exit Terminal
 map('t', '<ESC>', '<C-\\><C-n>', opts)
 
 map('n', '<leader>z', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
