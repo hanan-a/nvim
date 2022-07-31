@@ -15,7 +15,6 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
     use 'editorconfig/editorconfig-vim'
-    use "Pocco81/AutoSave.nvim"
     use 'booperlv/nvim-gomove'
     use({
       "nvim-telescope/telescope.nvim",
@@ -105,6 +104,10 @@ return require('packer').startup(function()
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
     use ({ 'projekt0n/github-nvim-theme' })
     use 'folke/lsp-colors.nvim'
+    use {
+      'romgrk/barbar.nvim',
+      requires = {'kyazdani42/nvim-web-devicons'}
+    }
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
