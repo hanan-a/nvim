@@ -8,6 +8,13 @@ map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
+-- Split navigation
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-c>', '<C-w>c', opts)
+
 -- Copy to clipboard
 map('n', '<leader>y', '"+y', opts)
 map('v', '<leader>y', '"+y', opts)
@@ -38,26 +45,6 @@ map('n', '<leader>lg', ':LazyGit<CR>', opts)
 
 map('n', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map('v', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
-
-map( "n", "<S-h>", "<Plug>GoNSMLeft", {} )
-map( "n", "<S-j>", "<Plug>GoNSMDown", {} )
-map( "n", "<S-k>", "<Plug>GoNSMUp", {} )
-map( "n", "<S-l>", "<Plug>GoNSMRight", {} )
-
-map( "x", "<S-h>", "<Plug>GoVSMLeft", {} )
-map( "x", "<S-j>", "<Plug>GoVSMDown", {} )
-map( "x", "<S-k>", "<Plug>GoVSMUp", {} )
-map( "x", "<S-l>", "<Plug>GoVSMRight", {} )
-
-map( "n", "<C-h>", "<Plug>GoNSDLeft", {} )
-map( "n", "<C-j>", "<Plug>GoNSDDown", {} )
-map( "n", "<C-k>", "<Plug>GoNSDUp", {} )
-map( "n", "<C-l>", "<Plug>GoNSDRight", {} )
-
-map( "x", "<C-h>", "<Plug>GoVSDLeft", {} )
-map( "x", "<C-j>", "<Plug>GoVSDDown", {} )
-map( "x", "<C-k>", "<Plug>GoVSDUp", {} )
-map( "x", "<C-l>", "<Plug>GoVSDRight", {} )
 
 -- Remaps for the refactoring operations currently offered by the plugin
 map("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
