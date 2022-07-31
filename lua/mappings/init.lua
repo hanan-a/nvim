@@ -14,7 +14,7 @@ map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-c>', '<C-w>c', opts)
-m
+
 -- Copy to clipboard
 map('n', '<leader>y', '"+y', opts)
 map('v', '<leader>y', '"+y', opts)

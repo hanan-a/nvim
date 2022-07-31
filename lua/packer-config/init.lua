@@ -104,4 +104,13 @@ return require('packer').startup(function()
     -- Tabline
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
     use ({ 'projekt0n/github-nvim-theme' })
+    use 'folke/lsp-colors.nvim'
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {     
+      }         -- your configuration comes here
+  end
+}
 end)
