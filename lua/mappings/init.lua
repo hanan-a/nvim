@@ -11,6 +11,9 @@ map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 -- Copy to clipboard
 map('n', '<leader>y', '"+y', opts)
 map('v', '<leader>y', '"+y', opts)
+-- Paste to clipboard
+map('n', '<leader>p', '"+p', opts)
+map('v', '<leader>p', '"+p', opts)
 
 -- Exit Terminal
 map('t', '<ESC>', '<C-\\><C-n>', opts)
