@@ -3,9 +3,9 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
 map('i', ';;', '<Esc>', opts)
-map('n', '<leader><S-r>', ':luafile %<CR>', opts)
 map('n', '<leader>t', ':tabnew<CR>', opts)
 
+-- NvimTree
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- Split navigation
@@ -35,12 +35,14 @@ map('v', '<leader>p', '"+p', opts)
 -- Exit Terminal
 map('t', '<ESC>', '<C-\\><C-n>', opts)
 
+-- Telescope
 map('n', '<leader>z', '<cmd>lua require("telescope.builtin").find_files()<cr>', opts)
 map('n', '<leader>g', '<cmd>lua require("telescope.builtin").live_grep()<cr>', opts)
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', opts)
 map('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', opts)
 map('n', '<leader>fp', ':Telescope project<CR>', opts)
 
+-- Hop
 map('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<cr>", {})
 map('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<cr>", {})
 map('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false, inclusive_jump = true })<cr>", {})
@@ -53,6 +55,7 @@ map('o', '<leader>n', "<cmd> lua require'hop'.hint_words({ hint_position = requi
 
 map('n', '<leader>lg', ':LazyGit<CR>', opts)
 
+-- Renamer
 map('n', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 map('v', '<S-F6>', '<cmd>lua require("renamer").rename()<cr>', { noremap = true, silent = true })
 
@@ -68,3 +71,6 @@ map("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Blo
 
 -- Inline variable can also pick up the identifier currently under the cursor without visual mode
 map("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+
+-- Barbar
+map('s', '<C-n>', "<cmd>lua require'tree'.toggle()<CR>", opts)
