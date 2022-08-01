@@ -15,6 +15,16 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-c>', '<C-w>c', opts)
 
+-- Split resizing
+map('n', '<A-j>', '<C-w>-', opts)
+map('v', '<A-j>', '<C-w>-', opts)
+map('n', '<A-k>', '<C-w>+', opts)
+map('v', '<A-k>', '<C-w>+', opts)
+map('n', '<A-l>', '<C-w>>', opts)
+map('v', '<A-l>', '<C-w>>', opts)
+map('n', '<A-h>', '<C-w><', opts)
+map('v', '<A-h>', '<C-w><', opts)
+
 -- Copy to clipboard
 map('n', '<leader>y', '"+y', opts)
 map('v', '<leader>y', '"+y', opts)
