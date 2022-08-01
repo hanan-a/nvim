@@ -14,6 +14,7 @@ return require('packer').startup(function()
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
     use "terrortylor/nvim-comment"   
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'mfussenegger/nvim-dap'
     use 'editorconfig/editorconfig-vim'
     use 'booperlv/nvim-gomove'
