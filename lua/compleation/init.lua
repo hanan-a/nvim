@@ -1,4 +1,10 @@
-require('nvim_comment').setup()
+require('nvim_comment').setup({
+  comment_empty = true,
+  line_mapping = "<leader>cl", 
+  operator_mapping = "<leader>c", 
+  comment_chunk_text_object = "<leader>cc"
+})
+
 require('null-ls').setup({
     sources = {
         require("null-ls").builtins.formatting.stylua,
