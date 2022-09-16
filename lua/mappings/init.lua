@@ -7,6 +7,7 @@ map('n', '<leader><S-r>', ':luafile %<CR>', opts)
 map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+map('n', '<leader>lf', ':Lf<CR>', opts)
 
 -- Split navigation
 map('n', '<C-h>', '<C-w>h', opts)

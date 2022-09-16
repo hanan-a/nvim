@@ -96,6 +96,29 @@ return require('packer').startup(function()
         {"nvim-treesitter/nvim-treesitter"}
       }
     }
+    use
+    {
+      "lmburns/lf.nvim",
+      config = function()
+        -- This feature will not work if the plugin is lazy-loaded
+        vim.g.lf_netrw = 1
+
+        require("lf").setup(
+        {
+          escape_quit = false,
+          border = "rounded",
+          --highlights = {FloatBorder = {guifg = require("kimbox.palette").colors.magenta}}
+        }
+        )
+      end,
+      requires = {
+        "plenary.nvim", 
+        "toggleterm.nvim"
+      }
+    }
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+      require("toggleterm").setup()
+    end}
     use {
       'filipdutescu/renamer.nvim',
       branch = 'master',
