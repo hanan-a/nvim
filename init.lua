@@ -1,6 +1,6 @@
 require('settings')
 require('packer-config')
-require('colorschemes.github-nvim-theme')
+require('colorschemes.nightfox')
 require('nvim-treesitter-config')
 require('git')
 require('lsp-zero-config')
