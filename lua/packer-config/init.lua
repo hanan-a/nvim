@@ -15,11 +15,10 @@ return require('packer').startup(function()
     use 'tpope/vim-surround'
     use 'mfussenegger/nvim-dap'
     use 'editorconfig/editorconfig-vim'
-    use "Pocco81/AutoSave.nvim"
     use 'booperlv/nvim-gomove'
     use({
       "nvim-telescope/telescope.nvim",
-      requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+      requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" }, { "BurntSushi/ripgrep" } },
       config = function()
         require("telescope").load_extension("lazygit")
       end,
