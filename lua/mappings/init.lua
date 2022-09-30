@@ -2,14 +2,12 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
-map('i', ';;', '<Esc>', opts)
-map('n', '<leader><S-r>', ':luafile %<CR>', opts)
 map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 map('n', '<leader>lf', ':Lf<CR>', opts)
 
--- Split navigation
+-- Pane Split navigation
 map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
