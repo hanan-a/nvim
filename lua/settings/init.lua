@@ -23,3 +23,7 @@ set.cursorline = true
 
 set.hidden = true
 set.mouse = 'a'
+
+set.spelllang = 'en_us'
+set.spell = true
+
