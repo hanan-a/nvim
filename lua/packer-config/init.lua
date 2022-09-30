@@ -49,7 +49,8 @@ return require('packer').startup(function()
     use 'rafamadriz/friendly-snippets'
    --completion
     use "hrsh7th/nvim-cmp" 
---    use {'neoclide/coc.nvim', branch = 'release'}
+    use {'neoclide/coc.nvim', branch = 'release'}
+    use { 'iamcco/coc-spell-checker' }
     --Tabnine windows
     --use {'tzachar/cmp-tabnine', after = "nvim-cmp", run='powershell ./install.ps1', requires = 'hrsh7th/nvim-cmp'}
     --Tabnine Linux
