@@ -2,6 +2,10 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = ' '
+
+-- Don't yank with x
+map('n', 'x', '"_x', opts)
+
 map('n', '<leader>t', ':tabnew<CR>', opts)
 
 map('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
