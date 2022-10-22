@@ -25,6 +25,7 @@ return require('packer').startup(function()
     })
     use { 'nvim-telescope/telescope-project.nvim' }
     use 'jose-elias-alvarez/null-ls.nvim'
+    use 'kamykn/spelunker.vim'
     use {
       'VonHeikemen/lsp-zero.nvim',
       requires = {
@@ -81,14 +82,14 @@ return require('packer').startup(function()
         require'alpha'.setup(require'alpha.themes.startify'.config)
       end
     }
-    use {
-      'phaazon/hop.nvim',
-      branch = 'v1', -- optional but strongly recommended
-      config = function()
-        -- you can configure Hop the way you like here; see :h hop-config
-        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      end
-    }
+    -- use {
+    --  'phaazon/hop.nvim',
+    --  branch = 'v1', -- optional but strongly recommended
+    --  config = function()
+    --    -- you can configure Hop the way you like here; see :h hop-config
+    --    require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    --  end
+    -- 
     use {
       "ThePrimeagen/refactoring.nvim",
       requires = {
