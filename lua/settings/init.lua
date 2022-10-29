@@ -2,9 +2,8 @@ local set = vim.opt
 
 set.expandtab = true
 set.smarttab = true
-set.shiftwidth = 2 
+set.shiftwidth = 2
 set.tabstop = 2
-
 set.hlsearch = true
 set.incsearch = true
 set.ignorecase = true
@@ -27,3 +26,4 @@ set.mouse = 'a'
 set.spelllang = 'en_us'
 set.spell = true
 
+set.termguicolors = true
