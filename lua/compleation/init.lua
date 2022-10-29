@@ -23,6 +23,16 @@ require"null-ls".setup({
     diagnostics_format = "[#{c}] #{m} (#{s})",
 })
 
+vim.diagnostic.config({
+  virtual_text = {
+    source = "always"
+  },
+  severity_sort = true,
+  float = {
+    source = "always"
+  },
+})
+
 local cmp = require'cmp'
 
 local mappings_utils = require('renamer.mappings.utils')
