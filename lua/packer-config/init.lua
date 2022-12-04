@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
         require("telescope").load_extension("lazygit")
       end,
     })
+use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
     use { 'nvim-telescope/telescope-project.nvim' }
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'kamykn/spelunker.vim'
@@ -129,6 +130,9 @@ return require('packer').startup(function(use)
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
     use ({ 'projekt0n/github-nvim-theme' })
     use 'folke/lsp-colors.nvim'
+    use 'ThePrimeagen/vim-be-good'
+    -- Minimap
+    use 'wfxr/minimap.vim'
     use {
       "folke/trouble.nvim",
       requires = "kyazdani42/nvim-web-devicons",
