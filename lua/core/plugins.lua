@@ -78,9 +78,17 @@ return require('packer').startup(function(use)
 
 
   use 'mfussenegger/nvim-dap'
-  use { 
+  use {
     "rcarriga/nvim-dap-ui",
     requires = {"mfussenegger/nvim-dap"}
+  }
+
+  use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
   }
 
   -- TMUX related
@@ -105,8 +113,8 @@ return require('packer').startup(function(use)
     'goolord/alpha-nvim',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
-  
-  
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
