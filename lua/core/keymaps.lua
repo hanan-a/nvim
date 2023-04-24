@@ -18,7 +18,7 @@ map('n', '<leader>-', '<C-w>s', opts)
 map('n', '<leader>\\', '<C-w>v', opts)
 
 -- Terminal handling
--- map('n', '<leader>t', ':term<CR>', opts)
+map('n', '<leader>t', ':term<CR>', opts)
 
 -- -- Pane Split navigation
 map('n', '<C-h>', '<C-w>h', opts)
