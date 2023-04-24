@@ -70,11 +70,6 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- use {
-  --   'akinsho/bufferline.nvim',
-  --   tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'
-  -- }
-
   use {
     'tzachar/cmp-tabnine',
     run='./install.sh',
