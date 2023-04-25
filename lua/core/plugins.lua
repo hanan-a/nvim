@@ -53,6 +53,14 @@ return require('packer').startup(function(use)
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
 
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
+
   use { -- TODO: Sort the nvim-tree installation
     'nvim-tree/nvim-tree.lua',
     requires = {
