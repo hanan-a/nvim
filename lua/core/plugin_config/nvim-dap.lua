@@ -4,10 +4,10 @@ map("n", "<F5>", ":lua require'dap'.continue()<CR>")
 map("n", "<F8>", ":lua require'dap'.set_over()<CR>")
 map("n", "<F7>", ":lua require'dap'.set_into()<CR>")
 map("n", "<F9>", ":lua require'dap'.set_out()<CR>")
-
 map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
--- map("n", "<leader>B", ":lua require'dap'.()<CR>")
 
+-- DAP UI
+map("n", "<leader>dui", ":lua require'dapui'.toggle()<CR>")
 
 require("dapui").setup()
 local dap = require('dap');
@@ -68,4 +68,15 @@ for _, language in ipairs({ "typescript", "javascript" }) do
             internalConsoleOptions = "neverOpen",
         }
     }
+end
+
+local dapui =  require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
 end
