@@ -1,4 +1,3 @@
--- require('core.plugin_config.nightfox')
 require('core.plugin_config.tokyonight')
 require('core.plugin_config.neodev')
 require('core.plugin_config.mason')

@@ -22,11 +22,11 @@ local packer_bootstrap = ensure_packer() -- TODO: Check documentation to see why
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use "EdenEast/nightfox.nvim"
   use 'folke/tokyonight.nvim'
   use 'nvim-lualine/lualine.nvim'
   use "windwp/nvim-autopairs"
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use 'rcarriga/nvim-notify'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -118,6 +118,18 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
 
+  use({
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    after = "nvim-web-devicons", -- keep this if you're using NvChad
+    config = function()
+      require("barbecue").setup()
+    end,
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
