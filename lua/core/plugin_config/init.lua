@@ -15,4 +15,5 @@ require('core.plugin_config.indent-blankline')
 require('core.plugin_config.alpha-nvim')
 require('core.plugin_config.tmux')
 require('core.plugin_config.trouble')
+require('core.plugin_config.nvim-notify')
 

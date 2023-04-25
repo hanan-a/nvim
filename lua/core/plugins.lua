@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs"
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'rcarriga/nvim-notify'
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
