@@ -1,9 +1,9 @@
 local map = vim.keymap.set;
 
 map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<F8>", ":lua require'dap'.set_over()<CR>")
-map("n", "<F7>", ":lua require'dap'.set_into()<CR>")
-map("n", "<F9>", ":lua require'dap'.set_out()<CR>")
+map("n", "<F8>", ":lua require'dap'.step_over()<CR>")
+map("n", "<F7>", ":lua require'dap'.step_into()<CR>")
+map("n", "<F9>", ":lua require'dap'.step_out()<CR>")
 map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
 
 -- DAP UI
