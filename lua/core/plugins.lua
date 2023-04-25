@@ -77,6 +77,8 @@ return require('packer').startup(function(use)
   }
 
 
+  -- DAP Related
+
   use 'mfussenegger/nvim-dap'
   use {
     "rcarriga/nvim-dap-ui",
@@ -90,6 +92,8 @@ return require('packer').startup(function(use)
     opt = true,
     run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
   }
+
+  use 'theHamsta/nvim-dap-virtual-text'
 
   -- TMUX related
   use 'aserowy/tmux.nvim'
