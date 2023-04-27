@@ -18,3 +18,5 @@ require('core.plugin_config.tmux')
 require('core.plugin_config.trouble')
 require('core.plugin_config.nvim-notify')
 
+require('core.plugin_config.customs')
+
