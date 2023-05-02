@@ -27,6 +27,8 @@ return require('packer').startup(function(use)
   use "windwp/nvim-autopairs"
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use 'rcarriga/nvim-notify'
+  use 'nvim-lua/plenary.nvim'
+  use 'ThePrimeagen/harpoon'
 
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -139,6 +141,19 @@ return require('packer').startup(function(use)
       require("barbecue").setup()
     end,
   })
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
