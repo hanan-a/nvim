@@ -48,6 +48,3 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 map('n', '<C-t>', ':TroubleToggle<CR>', opts)
 
--- Git keymaps
-map('n', '<leader>k', ':G<CR>', opts)
-map('n', '<leader>P', ':G push<CR>', opts)
