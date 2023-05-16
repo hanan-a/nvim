@@ -55,20 +55,30 @@ return require('packer').startup(function(use)
     requires = "nvim-tree/nvim-web-devicons",
   }
 
-  use { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
-  }
-
+  -- Snippets
+  use "rafamadriz/friendly-snippets"
   use({
     "L3MON4D3/LuaSnip",
     -- follow latest release.
     tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!:).
-    run = "make install_jsregexp"
+    run = "make install_jsregexp",
+    dependencies = {
+      "rafamadriz/friendly-snippets"
+    },
   })
 
-  use { -- TODO: Sort the nvim-tree installation
+  use { -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip'
+    },
+  }
+
+
+  use {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons',
@@ -106,7 +116,7 @@ return require('packer').startup(function(use)
   use {
     "microsoft/vscode-js-debug",
     opt = true,
-    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
   }
 
   use 'theHamsta/nvim-dap-virtual-text'
