@@ -4,7 +4,8 @@ local action_state = require "telescope.actions.state"
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map('n', '<leader>J', ':lua require("core.plugin_config.customs.jest-runner").find_and_run({ title = "Run a Jest Suite", filter = ".spec.ts$", cmd = "vsplit term://npx jest %s"})<CR>', opts)
+map('n', '<leader>Jr', ':lua require("core.plugin_config.customs.jest-runner").find_and_run({ title = "Run a Jest Suite", filter = ".spec.*$", cmd = "vsplit term://npx jest %s"})<CR>', opts)
+map('n', '<leader>Jw', ':lua require("core.plugin_config.customs.jest-runner").find_and_run({ title = "Run a Jest Suite", filter = ".spec.*$", cmd = "vsplit term://npx jest --watch %s"})<CR>', opts)
 
 local function find_and_run(options)
   options = options or {}
