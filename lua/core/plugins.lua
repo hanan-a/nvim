@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
   use 'rcarriga/nvim-notify'
   use 'nvim-lua/plenary.nvim'
   use 'ThePrimeagen/harpoon'
+  use 'm-demare/hlargs.nvim'
 
   use({
     "kylechui/nvim-surround",
