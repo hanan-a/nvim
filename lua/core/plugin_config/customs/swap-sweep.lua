@@ -8,15 +8,12 @@ local opts = { noremap = true, silent = true }
 map('n', '<leader>ss', ':lua require("core.plugin_config.customs.swap-sweep").find_and_sweep()<CR>', opts)
 
 local S = {}
-S.find_and_sweep = function(options)
+S.find_and_sweep = function()
   local swap_file_dir = os.getenv('HOME') .."/.local/state/nvim/swap/"
-  options = options or {
-    cmd = 'vsplit term//:rm $HOME/.local/state/nvim/swap/%s'
-  }
 
 
   local telescope_opts = require('telescope.themes').get_dropdown({
-    prompt_title = options.title or "Delete Swap File",
+    prompt_title = "Delete Swap File",
     previewer = false,
     cwd = swap_file_dir
   })
@@ -28,9 +25,9 @@ S.find_and_sweep = function(options)
       actions.close(prompt_bufnr)
 
       local selection = action_state.get_selected_entry()
-      local cmd = string.format(options.cmd, selection[1])
-
-      vim.cmd(cmd)
+      local file_name = selection[1]
+      os.remove(swap_file_dir ..file_name)
+      print('Swap file deleted: ' ..file_name)
     end)
 
     return true
