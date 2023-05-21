@@ -7,9 +7,10 @@ local opts = { noremap = true, silent = true }
 
 map('n', '<leader>ss', ':lua require("core.plugin_config.customs.swap-sweep").find_and_sweep()<CR>', opts)
 
+local swap_file_dir = os.getenv('HOME') .."/.local/state/nvim/swap/"
+
 local S = {}
 S.find_and_sweep = function()
-  local swap_file_dir = os.getenv('HOME') .."/.local/state/nvim/swap/"
 
 
   local telescope_opts = require('telescope.themes').get_dropdown({
@@ -34,6 +35,10 @@ S.find_and_sweep = function()
   end
 
   require('telescope.builtin').find_files(telescope_opts)
+end
+
+S.delete_all = function ()
+  
 end
 
 return S
