@@ -1,1 +1,1 @@
-require('hlargs').setup()
+require('hlargs').init()

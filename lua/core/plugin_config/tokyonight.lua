@@ -4,7 +4,7 @@
 -- tokyonight-storm
 -- tokyonight-day
 -- tokyonight-moon
-require("tokyonight").setup({
+require("tokyonight").init({
   -- your configuration comes here
   -- or leave it empty to use the default settings
   style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
