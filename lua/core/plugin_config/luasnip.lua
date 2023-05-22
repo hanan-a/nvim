@@ -1,7 +1,7 @@
 local ls = require "luasnip"
 local types = require("luasnip.util.types")
 
-ls.init({
+ls.setup({
   history = true,
   -- Update more often, :h events for more info.
   update_events = "TextChanged,TextChangedI",

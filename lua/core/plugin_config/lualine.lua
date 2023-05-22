@@ -1,5 +1,5 @@
 local lualine = require('lualine')
-lualine.init {
+lualine.setup {
   options = {
     theme = 'tokyonight'
   }

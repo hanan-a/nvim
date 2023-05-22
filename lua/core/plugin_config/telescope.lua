@@ -8,7 +8,7 @@ map.set('n', '<leader>fh', builtin.help_tags, {})
 map.set('n', '<leader>fo', builtin.oldfiles, {})
 map.set('n', '<C-p>', builtin.git_files, {})
 
-require('telescope').init{
+require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
       "rg",

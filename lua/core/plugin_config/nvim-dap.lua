@@ -9,10 +9,10 @@ map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
 -- DAP UI
 map("n", "<leader>dui", ":lua require'dapui'.toggle()<CR>")
 
-require("dapui").init()
+require("dapui").setup()
 local dap = require('dap');
 
-require("dap-vscode-js").init({
+require("dap-vscode-js").setup({
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
   -- debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.
   -- debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
@@ -112,7 +112,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-require("nvim-dap-virtual-text").init()
+require("nvim-dap-virtual-text").setup()
 
 vim.api.nvim_set_hl(0, "blue",   { fg = "#3d59a1" })
 vim.api.nvim_set_hl(0, "green",  { fg = "#9ece6a" })

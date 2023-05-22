@@ -1,2 +1,2 @@
 -- Init neovim lua configuration
-require('neodev').init()
+require('neodev').setup()

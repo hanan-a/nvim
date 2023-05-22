@@ -1,3 +1,3 @@
-require('notify').init({
+require('notify').setup({
   background_colour = '#000000'
 })

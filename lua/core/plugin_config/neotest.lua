@@ -1,4 +1,4 @@
-require('neotest').init({
+require('neotest').setup({
   adapters = {
     require('neotest-jest')({
       jestCommand = "jest --watch",

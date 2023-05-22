@@ -13,8 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
-  'wbthomason/packer.nvim',
-  'folke/tokyonight.nvim',
   'nvim-lualine/lualine.nvim',
   "windwp/nvim-autopairs",
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -22,9 +20,20 @@ local plugins = {
   'nvim-lua/plenary.nvim',
   'ThePrimeagen/harpoon',
   'm-demare/hlargs.nvim',
+  'folke/neodev.nvim',
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  },
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   {
     "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -49,9 +58,9 @@ local plugins = {
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
-    tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!:).
-    run = "make install_jsregexp",
+    build = "make install_jsregexp",
     dependencies = {
       "rafamadriz/friendly-snippets"
     },
@@ -75,7 +84,7 @@ local plugins = {
     run = ':TSUpdate'
   },
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', version = '0.1.0',
     -- or                            , branch = '0.1.x',
     dependencies = { {'nvim-lua/plenary.nvim'} }
   },
@@ -114,19 +123,18 @@ local plugins = {
   -- }
   {
     'goolord/alpha-nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    -- dependencies = { 'kyazdani42/nvim-web-devicons' },
   },
 
   {
     "utilyre/barbecue.nvim",
-    tag = "*",
+    version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
-    after = "nvim-web-devicons", -- keep this if you're using NvChad
     config = function()
-      require("barbecue").init()
+      require("barbecue").setup()
     end,
   },
   {
@@ -134,7 +142,7 @@ local plugins = {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").init {
+      require("which-key").setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -148,7 +156,7 @@ local plugins = {
   {
     "folke/noice.nvim",
     config = function()
-      require("noice").init({
+      require("noice").setup({
         -- add any options here
       })
     end,
@@ -162,5 +170,7 @@ local plugins = {
     }
   },
 }
+
+local opts = {}
 
 require("lazy").setup(plugins, opts);

@@ -1,2 +1,2 @@
-require("tmux").init()
+require("tmux").setup()
 

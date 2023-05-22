@@ -1,4 +1,4 @@
-require('startup').init({
+require('startup').setup({
   theme = 'startify'
 })
 
