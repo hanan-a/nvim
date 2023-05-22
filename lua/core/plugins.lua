@@ -23,7 +23,10 @@ local plugins = {
   'folke/neodev.nvim',
   {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate" -- :MasonUpdate updates registry contents
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    dependencies = {
+      'williamboman/mason-lspconfig.nvim',
+    }
   },
   {
     'folke/tokyonight.nvim',
@@ -73,6 +76,9 @@ local plugins = {
       'saadparwaiz1/cmp_luasnip'
     },
   },
+  { -- Copilot 
+    "zbirenbaum/copilot.lua" 
+  },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -90,8 +96,8 @@ local plugins = {
   },
   {
     'tzachar/cmp-tabnine',
-    run='./install.sh',
-    dependencies = 'hrsh7th/nvim-cmp'
+    build = './install.sh',
+    dependencies = 'hrsh7th/nvim-cmp',
   },
   -- DAP Related
   'mfussenegger/nvim-dap',
