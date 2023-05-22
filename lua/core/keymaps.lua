@@ -40,6 +40,8 @@ map('t', '<ESC>', '<C-\\><C-n>', opts)
 -- LazyGit
 map('n', '<leader>lg', ':LazyGit<CR>', opts)
 
+-- Copilot
+map('n', '<leader>cp', ':Copilot panel<CR>', opts)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
