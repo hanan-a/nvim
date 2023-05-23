@@ -48,3 +48,5 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 map('n', '<C-t>', ':TroubleToggle<CR>', opts)
 
+-- LSP Commands
+map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
