@@ -32,7 +32,6 @@ local plugins = {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
-    opts = {},
   },
   {
     "kylechui/nvim-surround",
@@ -77,7 +76,19 @@ local plugins = {
     },
   },
   { -- Copilot 
-    "zbirenbaum/copilot.lua" 
+    "zbirenbaum/copilot.lua",
+    config = function ()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -87,7 +98,7 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    build = ':TSUpdate'
   },
   {
     'nvim-telescope/telescope.nvim', version = '0.1.0',
@@ -108,8 +119,7 @@ local plugins = {
   { "mxsdev/nvim-dap-vscode-js", dependencies = {"mfussenegger/nvim-dap"} },
   {
     "microsoft/vscode-js-debug",
-    opt = true,
-    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
   },
   'theHamsta/nvim-dap-virtual-text',
   -- TMUX related
@@ -157,7 +167,7 @@ local plugins = {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     "folke/noice.nvim",
