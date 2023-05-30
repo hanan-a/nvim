@@ -79,7 +79,15 @@ local plugins = {
     "zbirenbaum/copilot.lua",
     config = function ()
       require("copilot").setup({
-        suggestion = { enabled = true },
+        suggestion = {
+          enabled = true,
+          keymap = {
+            accept = "<M-CR>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
         panel = { enabled = true },
       })
     end
