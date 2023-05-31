@@ -81,8 +81,9 @@ local plugins = {
       require("copilot").setup({
         suggestion = {
           enabled = true,
+          auto_trigger = true,
           keymap = {
-            accept = "<M-CR>",
+            accept = "<M-'>",
             next = "<M-]>",
             prev = "<M-[>",
             dismiss = "<C-]>",
