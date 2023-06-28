@@ -29,12 +29,22 @@ local plugins = {
     }
   },
   {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    dependencies = {
+      {"nvim-tree/nvim-web-devicons"},
+      --Please make sure you install markdown and markdown_inline parser
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  },
+  {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
   },
   {
     "kylechui/nvim-surround",
+    event = "VeryLazy",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
   { -- LSP Configuration & Plugins
@@ -174,11 +184,6 @@ local plugins = {
   },
   {
     "folke/noice.nvim",
-    config = function()
-      require("noice").setup({
-        -- add any options here
-      })
-    end,
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
@@ -188,6 +193,14 @@ local plugins = {
       "rcarriga/nvim-notify",
     }
   },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
 }
 
 local opts = {}

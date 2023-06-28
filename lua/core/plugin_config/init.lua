@@ -1,6 +1,7 @@
 require('core.plugin_config.tokyonight')
 require('core.plugin_config.neodev')
 require('core.plugin_config.mason')
+require('core.plugin_config.lspsaga')
 require('core.plugin_config.treesitter')
 require('core.plugin_config.nvim-cmp')
 require('core.plugin_config.hlargs')
@@ -20,6 +21,7 @@ require('core.plugin_config.comment')
 require('core.plugin_config.indent-blankline')
 require('core.plugin_config.alpha-nvim')
 require('core.plugin_config.tmux')
+require('core.plugin_config.noice')
 
 require('core.plugin_config.customs')
 
