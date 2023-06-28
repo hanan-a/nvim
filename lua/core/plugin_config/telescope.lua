@@ -7,6 +7,7 @@ map.set('n', '<leader>fg', builtin.live_grep, {})
 map.set('n', '<leader>fh', builtin.help_tags, {})
 map.set('n', '<leader>fo', builtin.oldfiles, {})
 map.set('n', '<C-p>', builtin.git_files, {})
+map.set('n', '<leader>sb', ':Telescope git_branches initial_mode=normal<CR>', {})
 
 require('telescope').setup{
   defaults = {
@@ -24,6 +25,7 @@ require('telescope').setup{
     selection_caret = "  ",
     entry_prefix = "  ",
     initial_mode = "insert",
+    -- initial_mode = "normal",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",
