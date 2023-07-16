@@ -28,15 +28,16 @@ local plugins = {
       'williamboman/mason-lspconfig.nvim',
     }
   },
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      {"nvim-tree/nvim-web-devicons"},
-      --Please make sure you install markdown and markdown_inline parser
-      {"nvim-treesitter/nvim-treesitter"}
-    }
-  },
+  -- {
+  --   "glepnir/lspsaga.nvim",
+  --   event = "LspAttach",
+  --   dependencies = {
+  --     {"nvim-tree/nvim-web-devicons"},
+  --     --Please make sure you install markdown and markdown_inline parser
+  --     {"nvim-treesitter/nvim-treesitter"}
+  --   }
+  -- },
+  { 'simrat39/symbols-outline.nvim' },
   {
     'folke/tokyonight.nvim',
     lazy = false,
