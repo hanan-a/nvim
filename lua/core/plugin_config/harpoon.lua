@@ -3,6 +3,10 @@ local opts = { noremap = true, silent = true }
 
 require("telescope").load_extension('harpoon')
 
+require("harpoon").setup({
+  mark_branch = true,
+})
+
 -- map('n', '<C-m>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
 map('n', '<C-e>', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
 -- map('n', '<C-e>', ':Telescope harpoon marks initial_mode=normal previewer=false<CR>', opts)
