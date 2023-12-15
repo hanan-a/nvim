@@ -40,6 +40,10 @@ map('t', '<ESC>', '<C-\\><C-n>', opts)
 -- LazyGit
 map('n', '<leader>lg', ':LazyGit<CR>', opts)
 
+-- Git Worktree
+map('n', '<leader>wt', ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
+map('n', '<leader>cwt', ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)
+map('n', '<leader>dwt', ":lua require('telescope').extensions.git_worktree.delete_worktree()<CR>", opts)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)

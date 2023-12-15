@@ -19,6 +19,7 @@ local plugins = {
   'rcarriga/nvim-notify',
   'nvim-lua/plenary.nvim',
   'ThePrimeagen/harpoon',
+  'polarmutex/git-worktree.nvim',
   'm-demare/hlargs.nvim',
   'folke/neodev.nvim',
   {
