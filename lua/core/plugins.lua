@@ -13,13 +13,17 @@ vim.opt.rtp:prepend(lazypath)
 
 
 local plugins = {
+  {
+    'hanan-a/git-worktree',
+    dir = '~/own/nvim-plugins/git-worktree',
+    config = true,
+  },
   'nvim-lualine/lualine.nvim',
   "windwp/nvim-autopairs",
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'rcarriga/nvim-notify',
   'nvim-lua/plenary.nvim',
   'ThePrimeagen/harpoon',
-  'polarmutex/git-worktree.nvim',
   'm-demare/hlargs.nvim',
   'folke/neodev.nvim',
   {
