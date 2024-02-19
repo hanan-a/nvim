@@ -1,4 +1,5 @@
-require('core.plugin_config.tokyonight')
+-- require('core.plugin_config.tokyonight')
+require('core.plugin_config.catppuccin')
 require('core.plugin_config.neodev')
 require('core.plugin_config.mason')
 require('core.plugin_config.outline')
