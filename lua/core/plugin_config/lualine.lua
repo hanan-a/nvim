@@ -1,8 +1,10 @@
 local lualine = require('lualine')
 lualine.setup({
   options = {
-    -- theme = 'tokyonight'
-    theme = 'catppuccin'
+    theme = 'catppuccin',
+    component_separators = " ",
+    section_separators = { left = "", right = "" },
+   -- theme = 'tokyonight'
   }
 })
 -- -- Eviline config for lualine
