@@ -1,9 +1,10 @@
 local lualine = require('lualine')
-lualine.setup {
+lualine.setup({
   options = {
-    theme = 'tokyonight'
+    -- theme = 'tokyonight'
+    theme = 'catppuccin'
   }
-}
+})
 -- -- Eviline config for lualine
 -- -- Author: shadmansaleh
 -- -- Credit: glepnir
