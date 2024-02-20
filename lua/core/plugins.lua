@@ -170,7 +170,9 @@ local plugins = {
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     config = function()
-      require("barbecue").setup()
+      require("barbecue").setup({
+        theme = "catppuccin"
+      })
     end,
   },
   {
