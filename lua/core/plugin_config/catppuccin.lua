@@ -63,6 +63,10 @@ require("catppuccin").setup({
       dim_context = false,
       alt_background = false,
     },
+    telescope = {
+      enabled = true,
+      style = "nvchad",
+    },
     --         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 
