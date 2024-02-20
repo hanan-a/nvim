@@ -1,3 +1,3 @@
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
-require('indent_blankline').setup() 
+-- require('indent_blankline').setup() 
