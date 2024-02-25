@@ -117,6 +117,20 @@ local plugins = {
     },
   },
   {
+    "lmburns/lf.nvim",
+    cmd = "Lf",
+    dependencies = { "nvim-lua/plenary.nvim", "akinsho/toggleterm.nvim" },
+    opts = {
+      winblend = 0,
+      highlights = { NormalFloat = { guibg = "NONE" } },
+      border = "single",
+      escape_quit = true,
+    },
+    keys = {
+      { "<leader>lf", "<cmd>Lf<cr>", desc = "NeoTree" },
+    },
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate'
   },
