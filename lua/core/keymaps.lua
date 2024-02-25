@@ -19,6 +19,10 @@ map('n', '<leader>\\', '<C-w>v', opts)
 
 -- Terminal handling
 map('n', '<leader>t', ':term<CR>', opts)
+vim.api.nvim_command('autocmd TermOpen * startinsert') -- Enter terminal mode in insert mode
+vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber') -- Hide line numbers in terminal
+vim.api.nvim_command('autocmd TermOpen * setlocal signcolumn=no') -- Hide sign column in terminal
+map('t', '<ESC>', '<C-\\><C-n>', opts) -- Exit terminal mode with ESC
 
 -- -- Pane Split navigation
 map('n', '<C-h>', '<C-w>h', opts)
@@ -34,8 +38,6 @@ map('v', '<leader>y', '"+y', opts)
 map('n', '<leader>p', '"+p', opts)
 map('v', '<leader>p', '"+p', opts)
 
--- Exit Terminal
-map('t', '<ESC>', '<C-\\><C-n>', opts)
 
 -- LazyGit
 map('n', '<leader>lg', ':LazyGit<CR>', opts)
