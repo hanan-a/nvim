@@ -15,7 +15,7 @@ map('n', '<leader>h', ':bp<CR>', opts)
 
 -- Splits
 map('n', '<leader>-', '<C-w>s', opts)
-map('n', '<leader>\\', '<C-w>v', opts)
+map('n', '<leader>_', '<C-w>v', opts)
 
 -- Terminal handling
 map('n', '<leader>t', ':term<CR>', opts)
