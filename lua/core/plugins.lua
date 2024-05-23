@@ -174,7 +174,6 @@ local plugins = {
   'tpope/vim-rhubarb', -- Enables :GBrowse to go to GitHub links
   'lewis6991/gitsigns.nvim',
   -- 'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
-  'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
   -- Startup screen
   -- use {
   --   "startup-nvim/startup.nvim",
