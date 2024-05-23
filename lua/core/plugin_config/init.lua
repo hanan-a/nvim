@@ -22,7 +22,7 @@ require('core.plugin_config.nvim-autopairs')
 require('core.plugin_config.nvim-surround')
 require('core.plugin_config.comment')
 require('core.plugin_config.indent-blankline')
-require('core.plugin_config.alpha-nvim')
+-- require('core.plugin_config.alpha-nvim')
 require('core.plugin_config.tmux')
 require('core.plugin_config.noice')
 

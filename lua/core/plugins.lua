@@ -177,10 +177,10 @@ local plugins = {
   --   "startup-nvim/startup.nvim",
   --   dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
   -- }
-  {
-    'goolord/alpha-nvim',
-    -- dependencies = { 'kyazdani42/nvim-web-devicons' },
-  },
+  -- {
+  --   'goolord/alpha-nvim',
+  --   -- dependencies = { 'kyazdani42/nvim-web-devicons' },
+  -- },
 
   {
     "utilyre/barbecue.nvim",
