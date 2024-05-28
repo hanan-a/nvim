@@ -1,4 +1,6 @@
-require("oil").setup({
+local oil = require("oil")
+
+oil.setup({
   -- git = {
   --   -- Return true to automatically git add/mv/rm files
   --   add = function(path)
@@ -24,5 +26,5 @@ require("oil").setup({
   }
 })
 
--- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-vim.keymap.set("n", "-", ":lua require('oil').open_float()<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", oil.open, { desc = "Open parent directory" })
+vim.keymap.set("n", "_", oil.open_float, { desc = "Open parent directory" })
