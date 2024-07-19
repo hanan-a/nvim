@@ -94,21 +94,6 @@ local plugins = {
   },
   { -- Copilot 
     "zbirenbaum/copilot.lua",
-    config = function ()
-      require("copilot").setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-y>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        panel = { enabled = true },
-      })
-    end
   },
   {
     'stevearc/oil.nvim',
@@ -146,10 +131,14 @@ local plugins = {
     dependencies = { {'nvim-lua/plenary.nvim'} }
   },
   {
-    'tzachar/cmp-tabnine',
-    build = './install.sh',
-    dependencies = 'hrsh7th/nvim-cmp',
+    'codota/tabnine-nvim',
+    build = "./dl_binaries.sh",
   },
+  -- {
+  --   'tzachar/cmp-tabnine',
+  --   build = './install.sh',
+  --   dependencies = 'hrsh7th/nvim-cmp',
+  -- },
   -- DAP Related
   'mfussenegger/nvim-dap',
   {
