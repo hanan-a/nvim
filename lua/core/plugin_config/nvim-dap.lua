@@ -1,20 +1,22 @@
 local map = vim.keymap.set;
+local dui = require("dapui")
 
-map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<F8>", ":lua require'dap'.step_over()<CR>")
-map("n", "<F7>", ":lua require'dap'.step_into()<CR>")
-map("n", "<F9>", ":lua require'dap'.step_out()<CR>")
-map("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-
+dui.setup()
 -- DAP UI
-map("n", "<leader>dui", ":lua require'dapui'.toggle()<CR>")
+map("n", "<leader>dui", dui.toggle)
 
-require("dapui").setup()
 local dap = require('dap');
+local opt = { noremap = true, silent = true }
+map("n", "<F5>", dap.continue, opt)
+map("n", "<F8>", dap.step_over, opt)
+map("n", "<F7>", dap.step_into, opt)
+map("n", "<F9>", dap.step_out, opt)
+map("n", "<leader>b", dap.toggle_breakpoint, opt)
+map("n", "<leader>de", dui.eval, opt)
 
 require("dap-vscode-js").setup({
   -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-  -- debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.
+  debugger_path = "/Users/hananavramovich/vscode-js-debug", -- Path to vscode-js-debug installation.
   -- debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
   adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
   -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
@@ -100,18 +102,34 @@ dap.configurations.cpp = {
     end,
   },
 }
+dap.listeners.before.attach.dapui_config = function()
+  dui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dui.close()
+end
+-- dap.listeners.after.event_initialized["dapui_config"] = function()
+--   dui.open()
+-- end
+-- dap.listeners.before.event_terminated["dapui_config"] = function()
+--   dui.close()
+-- end
+-- dap.listeners.before.event_exited["dapui_config"] = function()
+--   dui.close()
+-- end
 
-local dapui =  require("dapui")
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
-
+require('dap.ext.vscode').load_launchjs(nil,
+  { ['pwa-node'] = js_based_languages,
+    ['node'] = js_based_languages,
+    ['chrome'] = js_based_languages,
+    ['pwa-chrome'] = js_based_languages }
+)
 require("nvim-dap-virtual-text").setup()
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
