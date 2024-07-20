@@ -233,7 +233,6 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim"
     }
-  }
   },
   {
     "folke/todo-comments.nvim",
