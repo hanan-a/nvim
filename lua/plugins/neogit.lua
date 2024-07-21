@@ -12,5 +12,6 @@ return {
   config = true,
   keys = {
     { "+", "<cmd>Neogit<CR>", desc = "Toggle Neogit" },
+    { "<leader>gl", "<cmd>Neogit log<CR>", desc = "Toggle Neogit log" },
   },
 }
