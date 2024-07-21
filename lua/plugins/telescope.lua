@@ -68,6 +68,8 @@ return {
     map.set('n', '<leader>fo', builtin.oldfiles, {})
     map.set('n', '<C-p>', builtin.git_files, {})
     map.set('n', '<leader>sb', ':Telescope git_branches initial_mode=normal<CR>', {})
+    map.set('n', '<leader>st', ':Telescope git_status initial_mode=normal<CR>', {})
+    map.set('n', '<leader>sd', ':Telescope diagnostics initial_mode=normal<CR>', {})
   end
 }
 
