@@ -2,7 +2,7 @@ local oil = require("oil")
 
 oil.setup({
   -- git = {
-  --   -- Return true to automatically git add/mv/rm files
+  --   -- return true to automatically git add/mv/rm files
   --   add = function(path)
   --     return false
   --   end,
@@ -13,9 +13,9 @@ oil.setup({
   --     return true
   --   end,
   -- },
-  -- Configuration for the floating window in oil.open_float
+  -- configuration for the floating window in oil.open_float
   float = {
-    -- Padding around the floating window
+    -- padding around the floating window
     padding = 2,
     max_width = 0,
     max_height = 0,

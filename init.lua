@@ -1,6 +1,4 @@
-require('core.settings')
-require('core.globals')
-require('core.keymaps')
-require('core.plugins')
-require('core.plugin_config')
-
+require('config.settings')
+require('config.globals')
+require('config.keymaps')
+require('config.lazy')
