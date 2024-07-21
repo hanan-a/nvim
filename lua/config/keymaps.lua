@@ -56,7 +56,6 @@ map('n', '<C-t>', ':TroubleToggle<CR>', opts)
 
 -- LSP Commands
 map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
-map('n', '<leader>o', ':SymbolsOutline<CR>', opts)
 
 
 -- -- LSP SAGA ---------------------------------------------------
