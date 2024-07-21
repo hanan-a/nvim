@@ -1,16 +1,18 @@
 return { 
   "zbirenbaum/copilot.lua",
-  opt = {
-    suggestion = {
-      enabled = true,
-      auto_trigger = true,
-      keymap = {
-        accept = "<C-y>",
-        next = "<M-]>",
-        prev = "<M-[>",
-        dismiss = "<C-]>",
+  config = function()
+    require('copilot').setup({
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<c-y>",
+          next = "<m-]>",
+          prev = "<m-[>",
+          dismiss = "<c-]>",
+        },
       },
-    },
-    panel = { enabled = true },
-  },
+      panel = { enabled = true },
+    })
+  end
 }
