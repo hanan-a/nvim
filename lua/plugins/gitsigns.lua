@@ -1,7 +1,8 @@
 return {
   'lewis6991/gitsigns.nvim',
-  lazy = true,
-  opt = {
+  lazy = false,
+  config = function()
+    require('gitsigns').setup({
     signs = {
       add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
       change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
@@ -80,5 +81,6 @@ return {
       -- Text object
       map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
     end
-  },
+  })
+end,
 }

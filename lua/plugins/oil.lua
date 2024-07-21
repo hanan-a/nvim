@@ -1,9 +1,8 @@
 return   {
   'stevearc/oil.nvim',
-  lazy = true,
   opts = {
     -- git = {
-      --   -- return true to automatically git add/mv/rm files
+     --   -- return true to automatically git add/mv/rm files
       --   add = function(path)
         --     return false
         --   end,
