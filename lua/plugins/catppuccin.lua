@@ -5,23 +5,35 @@ return {
   priority = 1000,
   config = function()
     require('catppuccin').setup({
-      transparent_background = true, -- disables setting the background color.
+      transparent_background = false, -- disables setting the background color.
       integrations = {
         cmp = true,
         gitsigns = true,
         nvimtree = true,
         treesitter = true,
-        notify = false,
+        notify = true,
+        diffview = true,
+        harpoon = true,
+        indent_blankline = true,
+        neogit = true,
+        noice = true,
+        mason = true,
+
+        dap = true, -- Addtional conifg needed in nvim-dap
+        dap_ui = true,
+        lsp_trouble = true,
+        nvim_surround = true,
+        which_key = true,
         mini = {
           enabled = true,
           indentscope_color = "",
         },
-        alpha = true,
+        alpha = false,
         barbecue = {
           dim_dirname = true, -- directory name is dimmed by default
           bold_basename = true,
-          dim_context = false,
-          alt_background = false,
+          dim_context = true,
+          alt_background = true,
         },
         telescope = {
           enabled = true,
