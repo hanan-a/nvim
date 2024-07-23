@@ -14,7 +14,6 @@ return {
         notify = true,
         diffview = true,
         harpoon = true,
-        indent_blankline = true,
         neogit = true,
         noice = true,
         mason = true,
@@ -38,6 +37,11 @@ return {
         telescope = {
           enabled = true,
           style = "nvchad",
+        },
+        indent_blankline = {
+          enabled = true,
+          scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+          colored_indent_levels = false,
         },
         --         -- for more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
       },
