@@ -4,7 +4,8 @@ local M = { -- Autocompletion
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip'
+    'saadparwaiz1/cmp_luasnip',
+    'windwp/nvim-autopairs',
   },
 }
 
@@ -61,6 +62,10 @@ M.config = function()
       { name = "path", group_index = 2 },
     },
   }
+
+  -- If you want insert `(` after select function or method item
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+  cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   -- cmp.setup.cmdline('/', {
