@@ -56,3 +56,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+ -- "virtual_text = true" is needed for tiny-inline-diagnostic
+vim.diagnostic.config({
+  virtual_text = false,
+  underline = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    }
+  }
+})
