@@ -29,6 +29,9 @@ set.spell = true
 -- Save undo history
 vim.o.undofile = true
 
+
+vim.opt.foldmethod = "manual"
+
 set.termguicolors = true
 
 -- [[ Highlight on yank ]]
