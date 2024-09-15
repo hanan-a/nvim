@@ -6,7 +6,7 @@ local M = {
 M.config = function()
   require('tabnine').setup({
     disable_auto_comment=true,
-    accept_keymap="<Tab>",
+    accept_keymap="<C-y>",
     dismiss_keymap = "<C-]>",
     debounce_ms = 800,
     suggestion_color = {gui = "#808080", cterm = 244},
@@ -17,7 +17,7 @@ end
 
 M.init = function()
   --- Example integration with Tabnine and LuaSnip; falling back to inserting tab if neither has a completion
-  vim.keymap.set("i", "<tab>", function()
+  vim.keymap.set("i", "<C-y>v", function()
     if require("tabnine.keymaps").has_suggestion() then
       return require("tabnine.keymaps").accept_suggestion()
     elseif require("luasnip").jumpable(1) then

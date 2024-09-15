@@ -1,9 +1,10 @@
 return { 
   "zbirenbaum/copilot.lua",
+  enabled = false,
   config = function()
     require('copilot').setup({
       suggestion = {
-        enabled = true,
+        enabled = false,
         auto_trigger = true,
         keymap = {
           accept = "<c-y>",
