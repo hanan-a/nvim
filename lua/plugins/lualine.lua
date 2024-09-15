@@ -6,6 +6,7 @@ return {
     options = {
       -- theme = 'tokyonight'
       theme = 'catppuccin',
+      -- theme = 'eldritch',
       component_separators = " ",
       section_separators = { left = "", right = "" },
     },
