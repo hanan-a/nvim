@@ -8,21 +8,32 @@ return {
       "microsoft/vscode-js-debug",
       version = "1.x",
       build = "npm i && npm run compile vsDebugServerBundle && mv dist out"
+    },
+    {
+      "tomblind/local-lua-debugger-vscode",
+      build = "npm i && npm run build"
     }
   },
   keys = {
     -- normal mode is default
     { "<leader>b", function() require 'dap'.toggle_breakpoint() end },
-    { "<leader>c", function() require 'dap'.continue() end },
-    { "<C-'>",     function() require 'dap'.step_over() end },
-    { "<C-;>",     function() require 'dap'.step_into() end },
-    { "<C-:>",     function() require 'dap'.step_out() end },
+    { "<F5>", function() require 'dap'.continue() end },
+    { "<F8>",     function() require 'dap'.step_over() end },
+    { "<F7>",     function() require 'dap'.step_into() end },
+    { "<F9>",     function() require 'dap'.step_out() end },
   },
   config = function()
     require("dap-vscode-js").setup({
       debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-      adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+      adapters = {
+        'pwa-node',
+        'pwa-chrome',
+        'pwa-msedge',
+        'node-terminal',
+        'pwa-extensionHost',
+      },
     })
+
     for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
       require("dap").configurations[language] = {
         {
