@@ -3,7 +3,7 @@ return {
   lazy = false,
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
-  init = function() 
+  init = function()
     local harpoon = require("harpoon")
 
     -- REQUIRED
@@ -47,6 +47,7 @@ return {
         }),
         previewer = conf.file_previewer({}),
         sorter = conf.generic_sorter({}),
+        initial_mode = "normal",
       }):find()
     end
     vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
