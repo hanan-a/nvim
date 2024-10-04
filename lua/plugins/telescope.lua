@@ -52,12 +52,14 @@ return {
         -- Developer configurations: Not meant for general override
         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
         mappings = {
-          n = { ["q"] = require("telescope.actions").close },
+          n = {
+            ["q"] = require("telescope.actions").close,
+            ["d"] = require("telescope.actions").delete_buffer,
+          },
         },
       },
 
       extensions_list = { "themes", "terms" },
-
     })
     local builtin = require('telescope.builtin')
     local map = vim.keymap
@@ -70,6 +72,7 @@ return {
     map.set('n', '<leader>sb', ':Telescope git_branches initial_mode=normal<CR>', {})
     map.set('n', '<leader>st', ':Telescope git_status initial_mode=normal<CR>', {})
     map.set('n', '<leader>sd', ':Telescope diagnostics initial_mode=normal<CR>', {})
+    map.set('n', 'H', ':Telescope buffers initial_mode=normal sort_mru=true sort_lastused=true<CR>', {})
   end
 }
 
