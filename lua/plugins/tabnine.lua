@@ -1,7 +1,7 @@
 local M = {
   'codota/tabnine-nvim',
   build = "./dl_binaries.sh",
-  enabled = true,
+  enabled = false,
 };
 
 M.config = function()
