@@ -1,3 +1,19 @@
+local make_nmap = function(bufnr)
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  return function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
+
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+end
+
 return {
   "williamboman/mason-lspconfig.nvim",
   dependencies = {
@@ -7,20 +23,7 @@ return {
     -- LSP settings.
     --  This function gets run when an LSP connects to a particular buffer.
     local on_attach = function(_, bufnr)
-      -- NOTE: Remember that lua is a real programming language, and as such it is possible
-      -- to define small helper and utility functions so you don't have to repeat yourself
-      -- many times.
-      --
-      -- In this case, we create a function that lets us more easily define mappings specific
-      -- for LSP related items. It sets the mode, buffer and description for us each time.
-      local nmap = function(keys, func, desc)
-        if desc then
-          desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-      end
-
+      local nmap = make_nmap(bufnr) 
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
       nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -104,29 +107,4 @@ return {
       end,
     }
   end
-  -- config = function()
-  --   require("mason").setup()
-  --   require("mason-lspconfig").setup {
-  --     ensure_installed = {
-  --       "lua_ls",
-  --       "rust_analyzer",
-  --       "ts_ls",
-  --       "gopls",
-  --       "pyright",
-  --       "tailwindcss",
-  --       "dockerls",
-  --       "html",
-  --       "eslint",
-  --       "jsonls",
-  --       "grammarly",
-  --       "somesass_ls",
-  --       "sqlls",
-  --       "svelte",
-  --       "harper_ls",
-  --       "lemminx",
-  --       "spectral",
-  --       "diagnosticls",
-  --     },
-  --   }
-  -- end,
 }
