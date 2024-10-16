@@ -47,6 +47,7 @@ return {
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
+      nmap('<leader>F', vim.lsp.buf.format, 'Format current buffer with LSP');
     end
 
 
@@ -59,8 +60,7 @@ return {
       -- clangd = {},
       -- gopls = {},
       -- pyright = {},
-      rust_analyzer = {},
-      lua_ls = {}, 
+      lua_ls = {},
       rust_analyzer = {},
       -- ts_ls = {}, // This is disabled since using typescript-tools
       gopls = {},
@@ -70,7 +70,6 @@ return {
       html = {},
       eslint = {},
       jsonls = {},
-      grammarly = {},
       somesass_ls = {},
       sqlls = {},
       svelte = {},
@@ -108,8 +107,8 @@ return {
   -- config = function()
   --   require("mason").setup()
   --   require("mason-lspconfig").setup {
-  --     ensure_installed = { 
-  --       "lua_ls", 
+  --     ensure_installed = {
+  --       "lua_ls",
   --       "rust_analyzer",
   --       "ts_ls",
   --       "gopls",
