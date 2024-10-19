@@ -9,6 +9,8 @@ map('n', '<leader>R', ':source $MYVIMRC<CR>', opts)
 -- Don't yank with x
 map('n', 'x', '"_x', opts)
 
+-- EXC alternative
+
 -- Buffer navigation
 -- map('n', '<leader>l', ':bn<CR>', opts)
 -- map('n', '<leader>h', ':bp<CR>', opts)
@@ -39,10 +41,10 @@ map('n', '<leader>p', '"+p', opts)
 map('v', '<leader>p', '"+p', opts)
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+-- vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP Commands
 map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
