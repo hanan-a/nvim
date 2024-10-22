@@ -55,7 +55,6 @@ return {
           n = {
             ["q"] = require("telescope.actions").close,
             ["d"] = require("telescope.actions").delete_buffer,
-            ["<C-h>"] = "which_key",
           },
         },
       },
