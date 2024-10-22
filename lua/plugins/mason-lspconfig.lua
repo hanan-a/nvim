@@ -34,6 +34,7 @@ return {
       nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
       nmap('<leader>ds', telescope_builtin.lsp_document_symbols, '[D]ocument [S]ymbols')
       nmap('<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+      nmap('<leader>d', vim.diagnostic.open_float, 'Open [D]iagnostics in float window')
 
       -- See `:help K` for why this keymap
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -61,9 +62,6 @@ return {
     --  Add any additional override configuration in the following tables. They will be passed to
     --  the `settings` field of the server config. You must look up that documentation yourself.
     local servers = {
-      -- clangd = {},
-      -- gopls = {},
-      -- pyright = {},
       lua_ls = {},
       rust_analyzer = {},
       -- ts_ls = {}, // This is disabled since using typescript-tools
@@ -78,9 +76,6 @@ return {
       sqlls = {},
       svelte = {},
       harper_ls = {},
-      lemminx = {},
-      spectral = {},
-      diagnosticls = {},
     }
 
 
@@ -88,7 +83,7 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    -- init mason so it can manage external tooling
+    -- Init mason so it can manage external tooling
     require('mason').setup()
 
     -- Ensure the servers above are installed
