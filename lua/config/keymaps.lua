@@ -20,7 +20,7 @@ map('n', '<leader>-', '<C-w>s', opts)
 map('n', '<leader>_', '<C-w>v', opts)
 
 -- Terminal handling
-map('n', '<leader>t', ':term<CR>', opts)
+-- map('n', '<leader>tr', ':term<CR>', opts)
 vim.api.nvim_command('autocmd TermOpen * startinsert') -- Enter terminal mode in insert mode
 vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber') -- Hide line numbers in terminal
 vim.api.nvim_command('autocmd TermOpen * setlocal signcolumn=no') -- Hide sign column in terminal
