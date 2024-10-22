@@ -76,6 +76,8 @@ return {
     map.set('n', '<leader>sd', ':Telescope diagnostics initial_mode=normal<CR>', { desc = 'Diagnostics' })
     map.set('n', 'H', ':Telescope buffers initial_mode=normal sort_mru=true sort_lastused=true<CR>', { desc = 'Buffers' })
     map.set('n', '<leader>ss', builtin.spell_suggest, { desc = 'Spell Suggest' })
+    map.set('n', '<leader>ql', builtin.quickfix, { desc = 'Quickfix List' })
+    map.set('n', '<leader>mk', builtin.marks, { desc = 'List Marks' })
   end
 }
 
