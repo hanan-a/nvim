@@ -1,12 +1,9 @@
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    require('lualine').setup {
+  opts = {
     options = {
-      -- theme = 'tokyonight'
       theme = 'catppuccin',
-      -- theme = 'eldritch',
       component_separators = " ",
       section_separators = { left = "", right = "" },
     },
@@ -19,12 +16,6 @@ return {
       lualine_y = {'progress'},
       lualine_z = {'location'}
       -- DEFAULTS -------------------------------
-
-      -- lualine_b = {'branch', 'diff', 'diagnostics'},
-      -- lualine_c = {'lsp_progress'},
-      -- lualine_x = {'tabnine', 'encoding', 'fileformat', 'filetype'},
-      -- lualine_y = { 'progress' },
     }
-  }
-  end
+  },
 }
