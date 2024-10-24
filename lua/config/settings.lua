@@ -26,7 +26,7 @@ set.mouse = 'a'
 set.spelllang = 'en_us'
 set.spell = true
 
-set.shell = '/bin/bash'
+-- set.shell = '/bin/bash'
 
 -- Save undo history
 vim.o.undofile = true
