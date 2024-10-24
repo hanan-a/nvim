@@ -10,8 +10,7 @@ return {
     "SmiteshP/nvim-navic",
     "nvim-tree/nvim-web-devicons", -- Optional dependency
   },
-  config = function()
-    require("barbecue").setup({
+  opts = {
       theme = "catppuccin",
       exclude_filetypes = {
         "gitcommit",
@@ -20,7 +19,6 @@ return {
         "toggleterm",
         "neo-tree",
       },
-    })
-  end
+  },
 }
 
