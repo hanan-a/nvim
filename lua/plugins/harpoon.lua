@@ -27,6 +27,13 @@ return {
   keys = function()
     local keys = {
       {
+        "<leader>m",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "Mark file with Harpoon",
+      },
+      {
         "<leader>e",
         function()
           local harpoon = require("harpoon")
