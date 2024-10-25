@@ -25,18 +25,18 @@ return {
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = function()
+    local harpoon = require("harpoon")
     local keys = {
       {
         "<leader>m",
         function()
-          require("harpoon"):list():add()
+          harpoon:list():add()
         end,
         desc = "Mark file with Harpoon",
       },
       {
         "<leader>e",
         function()
-          local harpoon = require("harpoon")
           harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         desc = "Harpoon Quick Menu",
@@ -44,21 +44,21 @@ return {
       {
         "<C-c>",
         function()
-          require("harpoon"):list():next()
+          harpoon:list():next()
         end,
         desc = "Navigate to next Harpoon file",
       },
       {
         "<C-x>",
         function()
-          require("harpoon"):list():prev()
+          harpoon:list():prev()
         end,
         desc = "Navigate to previous Harpoon file",
       },
       {
         "<C-e>",
         function()
-          toggle_telescope(require("harpoon"):list())
+          toggle_telescope(harpoon:list())
         end,
         desc = "Open Harpoon list with Telescope",
       }
@@ -68,7 +68,7 @@ return {
       table.insert(keys, {
         "<leader>" .. i,
         function()
-          require("harpoon"):list():select(i)
+          harpoon:list():select(i)
         end,
         desc = "Harpoon to File " .. i,
       })
