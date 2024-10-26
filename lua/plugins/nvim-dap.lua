@@ -14,14 +14,17 @@ return {
       build = "npm i && npm run build"
     }
   },
-  keys = {
-    -- normal mode is default
-    { "<leader>b", function() require 'dap'.toggle_breakpoint() end },
-    { "<F5>", function() require 'dap'.continue() end },
-    { "<F8>",     function() require 'dap'.step_over() end },
-    { "<F7>",     function() require 'dap'.step_into() end },
-    { "<F9>",     function() require 'dap'.step_out() end },
-  },
+  keys = function()
+    local dap = require('dap')
+    local keys = {
+      { "<leader>b", function() dap.toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+      { "<F5>",      function() dap.continue() end, desc = "DAP Start/Continue" },
+      { "<F8>",      function() dap.step_over() end, desc = "DAP Step Over" },
+      { "<F7>",      function() dap.step_into() end, desc = "DAP Step Into" },
+      { "<F9>",      function() dap.step_out() end, desc = "DAP Step Out" },
+    }
+    return keys
+  end,
   config = function()
     require("dap-vscode-js").setup({
       debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
