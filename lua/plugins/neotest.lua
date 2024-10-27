@@ -37,13 +37,9 @@ return {
       {
         "<leader>tt",
         function ()
-          neotest.summary.open()
-          neotest.run.run({
-            vitestCommand = 'npm test -- ',
-            jestCommand = 'npm test -- ',
-          })
+          neotest.summary.toggle()
         end,
-        desc = "Run Watch",
+        desc = "Neotest Open Summary",
       },
       {
         "<leader>tdv",
