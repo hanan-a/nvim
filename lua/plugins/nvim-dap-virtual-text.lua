@@ -3,5 +3,8 @@ return {
   event = { "VeryLazy" },
   dependencies = {
     "mfussenegger/nvim-dap",
-  }
+  },
+  opts = {
+    all_references = true,
+  },
 }
