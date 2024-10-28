@@ -19,9 +19,9 @@ end
 
 return {
   "ThePrimeagen/harpoon",
-  lazy = false,
-  name = "Harpoon",
-  cmd = { "Harpoon" },
+  lazy = true,
+  name = "harpoon",
+  event = "BufWinEnter",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = function()

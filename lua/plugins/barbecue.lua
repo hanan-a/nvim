@@ -2,7 +2,8 @@ return {
   "utilyre/barbecue.nvim",
   enabled = true,
   version = "*",
-  event = { "VeryLazy" },
+  lazy = "VeryLazy",
+  event = "BufRead",
   command = {
     "Barbecue"
   },

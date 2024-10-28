@@ -1,5 +1,7 @@
 return {
   "yamatsum/nvim-cursorline",
+  lazy = true,
+  event = "BufRead",
   opts = {
     cursorline = {
       enable = true,

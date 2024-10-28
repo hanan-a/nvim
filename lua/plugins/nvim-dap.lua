@@ -1,5 +1,10 @@
 return {
   "mfussenegger/nvim-dap",
+  lazy = true,
+  cmd = {
+    "DapToggleBreakpoint",
+    "DapContinue",
+  },
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "mxsdev/nvim-dap-vscode-js",
@@ -53,6 +58,18 @@ return {
           cwd = "${workspaceFolder}",
           console = "integratedTerminal",
           internalConsoleOptions = "neverOpen",
+        },
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Debug Vitest',
+          cwd = vim.fn.getcwd(),
+          program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
+          args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
+          autoAttachChildProcesses = true,
+          smartStep = true,
+          console = 'integratedTerminal',
+          skipFiles = { '<node_internals>/**', 'node_modules/**' },
         },
         -- attach to a node process that has been started with
         -- `--inspect` for longrunning tasks or `--inspect-brk` for short tasks
@@ -118,10 +135,13 @@ return {
     vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
     vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg = '#31353f' })
 
-    vim.fn.sign_define('DapBreakpoint', { text='', texthl='DapBreakpoint', linehl='', numhl='DapBreakpoint' })
-    vim.fn.sign_define('DapBreakpointCondition', { text='ﳁ', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-    vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
-    vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
-    vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = 'DapBreakpoint' })
+    vim.fn.sign_define('DapBreakpointCondition',
+      { text = 'ﳁ', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+    vim.fn.sign_define('DapBreakpointRejected',
+      { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+    vim.fn.sign_define('DapLogPoint',
+      { text = '', texthl = 'DapLogPoint', linehl = 'DapLogPoint', numhl = 'DapLogPoint' })
+    vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
   end
 }

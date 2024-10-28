@@ -1,5 +1,9 @@
 return {
   "nvim-neotest/neotest",
+  lazy = true,
+  cmd = {
+    "Neotest",
+  },
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
@@ -9,25 +13,25 @@ return {
     'nvim-neotest/neotest-jest',
   },
   keys = function()
-    local neotest = require('neotest')
     local keys = {
       {
         "<leader>ntp",
         function()
-          neotest.output_panel.toggle()
+          require('neotest').output_panel.toggle()
         end,
         desc = "Neotest Open Output Panel",
       },
       {
         "<leader>nts",
         function()
-          neotest.summary.toggle()
+          require('neotest').summary.toggle()
         end,
         desc = "Neotest Open Summary",
       },
       {
         "<leader>ntc",
         function()
+          local neotest = require('neotest')
           neotest.output.close()
           neotest.summary.close()
           neotest.output_panel.close()
@@ -37,13 +41,14 @@ return {
       {
         "<leader>tt",
         function ()
-          neotest.summary.toggle()
+          require('neotest').summary.toggle()
         end,
         desc = "Neotest Open Summary",
       },
       {
         "<leader>tdv",
         function ()
+          local neotest = require('neotest')
           neotest.summary.open()
           neotest.run.run({
             vitestCommand = 'npm test -- ',
