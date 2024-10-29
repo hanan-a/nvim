@@ -64,10 +64,14 @@ return {
     local servers = {
       lua_ls = {},
       rust_analyzer = {},
-      -- ts_ls = {}, // This is disabled since using typescript-tools
+      -- ts_ls = {}, -- This is disabled since using typescript-tools or vtsls
+      vtsls = {},
       gopls = {},
+      golangci_lint_ls = {},
       pyright = {},
       tailwindcss = {},
+      cssls = {},
+      css_variables = {},
       dockerls = {},
       html = {},
       eslint = {},
@@ -75,7 +79,8 @@ return {
       somesass_ls = {},
       sqlls = {},
       svelte = {},
-      harper_ls = {},
+      angularls = {},
+      diagnosticls = {},
     }
 
 
