@@ -27,9 +27,15 @@ require("lazy").setup({
     -- import your plugins
     { import = "plugins" },
   },
+  -- version = nil, -- always use the latest git commit
+  version = "*", -- try installing the latest stable version for plugins that support semver
+  -- automatically check for plugin updates
+  checker = {
+    enabled = true,
+    frequency = 86400, -- check for updates every 24h
+  },
+
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "catppuccin" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
 })
