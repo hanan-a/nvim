@@ -31,7 +31,7 @@ require("lazy").setup({
   version = "*", -- try installing the latest stable version for plugins that support semver
   -- automatically check for plugin updates
   checker = {
-    enabled = true,
+    enabled = false,
     frequency = 86400, -- check for updates every 24h
   },
 
