@@ -22,7 +22,7 @@ return {
   init = function()
     -- LSP settings.
     --  This function gets run when an LSP connects to a particular buffer.
-    local on_attach = function(_, bufnr)
+    local on_attach = function(client, bufnr)
       local nmap = make_nmap(bufnr)
       local telescope_builtin = require('telescope.builtin')
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -53,6 +53,19 @@ return {
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
       nmap('<leader>F', vim.lsp.buf.format, 'Format current buffer with LSP');
+
+      if client.name == "svelte" then
+        vim.api.nvim_create_autocmd("BufWritePost", {
+          pattern = { "*.js", "*.ts" },
+          group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
+          callback = function(ctx)
+            -- Here use ctx.match instead of ctx.file
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+          end,
+        })
+
+  -- attach keymaps if needed
+end
     end
 
 
