@@ -12,7 +12,8 @@ return {
     "nvim-tree/nvim-web-devicons", -- Optional dependency
   },
   opts = {
-      theme = "catppuccin",
+      -- theme = "catppuccin",
+      theme = GET_COLORSCHEME(),
       exclude_filetypes = {
         "gitcommit",
         "neogit",
