@@ -3,7 +3,7 @@ return {
   lazy = false,
   version = '0.1.x', -- or branch = '0.1.x',
   dependencies = { {'nvim-lua/plenary.nvim'} },
-  init = function()
+  config = function()
     require('telescope').setup({
       defaults = {
         vimgrep_arguments = {
