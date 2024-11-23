@@ -5,9 +5,13 @@ return {
   event = 'VimEnter',
   opts = {
     options = {
-      theme = 'catppuccin',
+      -- theme = 'catppuccin',
+      theme = GET_COLORSCHEME(),
       component_separators = " ",
-      section_separators = { left = "", right = "" },
+      -- component_separators = { left = "", right = "" },
+      -- section_separators = "",
+      -- section_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
     },
     sections = {
       -- DEFAULTS -------------------------------
@@ -18,6 +22,13 @@ return {
       lualine_y = {'progress'},
       lualine_z = {'location'}
       -- DEFAULTS -------------------------------
+    },
+    extensions = {
+      --- Keep short to improve performance
+      'oil',
+      'trouble',
+      'nvim-dap-ui',
+      'lazy',
     }
   },
 }
