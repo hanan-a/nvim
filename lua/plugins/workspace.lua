@@ -5,7 +5,11 @@ return {
     workspaces = {
       { name = "Work",  path = "~/wrk",  keymap = { "<leader>w" } },
       { name = "Own", path = "~/own", keymap = { "<leader>p" } },
-    }
+    },
+---@diagnostic disable-next-line: unused-local
+    tmux_session_name_generator = function (project_name, workspace_name)
+      return project_name
+    end
   },
   keys = function ()
     local ws = require('workspace')
