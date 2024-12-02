@@ -78,6 +78,7 @@ return {
     map.set('n', '<leader>ss', builtin.spell_suggest, { desc = 'Spell Suggest' })
     map.set('n', '<leader>ql', builtin.quickfix, { desc = 'Quickfix List' })
     map.set('n', '<leader>mk', builtin.marks, { desc = 'List Marks' })
+    map.set('n', '<leader>rr', builtin.registers, { desc = 'Registers' })
   end
 }
 
