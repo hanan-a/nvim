@@ -60,6 +60,9 @@ return {
       },
 
       extensions_list = { "themes", "terms" },
+      extensions = {
+        fzf = {},
+      }
     })
     local builtin = require('telescope.builtin')
     local map = vim.keymap
@@ -79,6 +82,7 @@ return {
     map.set('n', '<leader>ql', builtin.quickfix, { desc = 'Quickfix List' })
     map.set('n', '<leader>mk', builtin.marks, { desc = 'List Marks' })
     map.set('n', '<leader>rr', builtin.registers, { desc = 'Registers' })
+    require('telescope').load_extension('fzf')
   end
 }
 
