@@ -18,6 +18,8 @@ map('n', 'x', '"_x', opts)
 -- Splits
 map('n', '<leader>-', '<C-w>s', opts)
 map('n', '<leader>_', '<C-w>v', opts)
+map('n', '<leader>cp', '<C-w>c', opts)
+map('n', '<leader>co', '<C-w>o', opts)
 
 -- Terminal handling
 map('n', '<leader>tr', ':term<CR>', opts)
