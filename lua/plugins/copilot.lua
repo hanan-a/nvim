@@ -1,4 +1,4 @@
-return {
+local ZBIRENBAUM = {
   "zbirenbaum/copilot.lua",
   enabled = true,
   lazy = true,
@@ -17,3 +17,21 @@ return {
     panel = { enabled = true },
   },
 }
+
+---@diagnostic disable-next-line: unused-local
+local COPILOT = {
+  "github/copilot.vim",
+  enabled = true,
+  lazy = true,
+  cmd = "InsertEnter",
+  opts = {},
+  key = function ()
+    local keys = {
+      { "<C-y>", "copilot#accept", desc = "Copilot: Accept Suggestion", mode = "i" },
+    }
+
+    return keys
+  end,
+}
+
+return ZBIRENBAUM
