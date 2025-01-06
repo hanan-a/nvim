@@ -77,8 +77,12 @@ end
     local servers = {
       lua_ls = {},
       rust_analyzer = {},
-      -- ts_ls = {}, -- This is disabled since using typescript-tools or vtsls
-      vtsls = {},
+      ts_ls = {
+        implicitProjectConfiguration = {
+          checkJs = true
+        }
+      },
+      -- vtsls = {},
       gopls = {},
       golangci_lint_ls = {},
       pyright = {},
