@@ -77,12 +77,8 @@ end
     local servers = {
       lua_ls = {},
       rust_analyzer = {},
-      ts_ls = {
-        implicitProjectConfiguration = {
-          checkJs = true
-        }
-      },
-      -- vtsls = {},
+      -- ts_ls = {},
+      vtsls = {},
       gopls = {},
       golangci_lint_ls = {},
       pyright = {},
