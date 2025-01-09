@@ -1,5 +1,4 @@
 require('config.settings')
 require('config.globals')
 require('config.keymaps')
-require('config.custom')
 require('config.lazy')
