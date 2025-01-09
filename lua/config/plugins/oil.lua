@@ -23,7 +23,7 @@ return   {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = "Oil",
   keys = {
-    { "-", "<cmd>Oil<cr>", desc = "Open Oil Explorer" },
-    { "_", "<cmd>Oil --float<cr>", desc = "Open Oil Explorer" },
+    { "_", "<cmd>Oil<cr>", desc = "Open Oil Explorer" },
+    { "-", "<cmd>Oil --float<cr>", desc = "Open Oil Explorer" },
   },
 }
