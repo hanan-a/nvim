@@ -1,5 +1,4 @@
 ~/
-plugin/
 pack/
 *.vim
 lazy-lock.json
