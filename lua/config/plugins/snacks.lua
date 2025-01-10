@@ -52,7 +52,7 @@ return {
   },
   keys = {
     { "<leader>gg", function() Snacks.lazygit() end,               "Snacks: Open lazygit" },
-    { "<leader>lg", function() Snacks.lazygit.log() end,           "Snacks: Open lazygit" },
+    { "<leader>lg", function() Snacks.lazygit.log() end,           "Snacks: Open lazygit Log" },
     { "<M-o>",      function() Snacks.terminal() end,              desc = "Toggle Terminal" },
     { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
   }
