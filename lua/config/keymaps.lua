@@ -30,3 +30,6 @@ map('v', '<leader>p', '"+p', opts)
 
 -- LSP Commands
 map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
+
+-- Select all
+map('n', '<leader>a', 'ggVG', opts)
