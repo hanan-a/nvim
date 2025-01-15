@@ -14,7 +14,7 @@ return {
   keys = function ()
     local ws = require('workspace')
     local keys = {
-      { "<leader>as", function () ws.tmux_sessions() end, desc = "Switch TMUX sessions" },
+      { "<leader>ts", function () ws.tmux_sessions() end, desc = "Switch TMUX sessions" },
     }
 
     return keys
