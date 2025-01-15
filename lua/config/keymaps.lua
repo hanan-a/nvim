@@ -35,3 +35,5 @@ map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
 map('n', '<leader>a', 'ggVG', opts)
 -- Yank all into clipboard
 map('n', '<leader>ay', 'ggVG"+y', opts)
+-- Clear buffer
+map('n', '<leader>cb', ':%d<CR>', opts)
