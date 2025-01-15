@@ -33,3 +33,5 @@ map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
 
 -- Select all
 map('n', '<leader>a', 'ggVG', opts)
+-- Yank all into clipboard
+map('n', '<leader>ay', 'ggVG"+y', opts)
