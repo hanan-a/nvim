@@ -8,6 +8,7 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
     bigfile = { enabled = true },
+    picker = {},
     notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
@@ -51,9 +52,14 @@ return {
     },
   },
   keys = {
-    { "<leader>gg", function() Snacks.lazygit() end,               "Snacks: Open lazygit" },
-    { "<leader>lg", function() Snacks.lazygit.log() end,           "Snacks: Open lazygit Log" },
-    { "<M-o>",      function() Snacks.terminal() end,              desc = "Toggle Terminal" },
-    { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
+    { "<leader>gg",      function() Snacks.lazygit() end, "Snacks: Open lazygit" },
+    { "<leader>lg",      function() Snacks.lazygit.log() end, "Snacks: Open lazygit Log" },
+    { "<M-o>",           function() Snacks.terminal() end, desc = "Toggle Terminal" },
+    { "<leader>nh",      function() Snacks.notifier.show_history() end, desc = "Show notifier history" },
+    { "<leader><space>", function() Snacks.picker.smart({ layout = { preset = "ivy" }}) end, desc = "Smart Find Files" },
+    { "<S-h>",       function() Snacks.picker.buffers({ focus = 'list', layout = { preset = "ivy" } }) end, desc = "Buffers" },
+    { "<C-f>", function() Snacks.picker.git_files({ layout = { preset = "ivy" }}) end, desc = "Find Git Files" },
+    { "<leader>fr", function() Snacks.picker.recent({ focus = "list", layout = { preset = "ivy" }}) end, desc = "Recent" },
+    { "<leader>i", function() Snacks.explorer({ layout = { preset = "sidebar" }}) end, desc = "File Explorer" },
   }
 }
