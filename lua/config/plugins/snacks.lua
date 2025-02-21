@@ -14,6 +14,16 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     dashboard = { enabled = false, example = "github" },
+    indent = {
+      enabled = true,
+      animate = {
+        enabled = true,
+        duration = {
+          steps = 20,
+          total = 100,
+        }
+      },
+    },
     terminal = {
       bo = {
         filetype = "snacks_terminal",
