@@ -24,6 +24,7 @@ return {
         }
       },
     },
+    image = { enabled = true },
     terminal = {
       bo = {
         filetype = "snacks_terminal",
