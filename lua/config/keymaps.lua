@@ -32,7 +32,7 @@ map('v', '<leader>p', '"+p', opts)
 map('n', '<leader>rlsp', ':LspRestart<CR>', opts)
 
 -- Select all
-map('n', '<leader>a', 'ggVG', opts)
+map('n', '<leader>A', 'ggVG', opts)
 -- Yank all into clipboard
 map('n', '<leader>ay', 'ggVG"+y', opts)
 -- Clear buffer
