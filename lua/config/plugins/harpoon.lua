@@ -17,6 +17,21 @@ local function toggle_telescope(harpoon_files)
   }):find()
 end
 
+local function toggle_snacks(harpoon_files)
+  local file_paths = {}
+  for _, item in ipairs(harpoon_files.items) do
+    table.insert(file_paths, item.value)
+  end
+
+  Snacks.picker.start({
+    items = file_paths,
+    layout = { preset = "ivy" },
+    initial_mode = "normal",
+    title = "Harpoon",
+  })
+end
+
+
 return {
   "ThePrimeagen/harpoon",
   lazy = true,

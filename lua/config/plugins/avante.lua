@@ -30,6 +30,40 @@ return {
       enable_token_counting = false,
     },
   },
+  keys = {
+    {
+      "<leader>ac",
+      function()
+        require("avante.api").chat.open_chat_window()
+      end,
+      mode = "n",
+      desc = "Avante: Open Chat Window",
+    },
+    {
+      "<leader>ap",
+      function()
+        require("avante.api").prompt.run_prompt_with_visual_selection()
+      end,
+      mode = "v",
+      desc = "Avante: Run Prompt on Visual Selection",
+    },
+    {
+      "<leader>ag",
+      function()
+        require("avante.api").prompt.run_magic_prompt() -- Assuming a generic "generate" or "magic" prompt
+      end,
+      mode = "n",
+      desc = "Avante: Run Magic Prompt (e.g., generate code)",
+    },
+    {
+      "<leader>ae",
+      function()
+        require("avante.api").prompt.run_prompt_with_visual_selection({ default_prompt = "Explain this code" })
+      end,
+      mode = "v",
+      desc = "Avante: Explain Selected Code",
+    },
+  },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
