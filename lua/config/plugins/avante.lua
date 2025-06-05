@@ -6,28 +6,41 @@ return {
     -- add any opts here
     -- for example
     provider = "gemini",
-    claude = {
-      endpoint = "https://api.anthropic.com",
-      model = "claude-3-5-sonnet-20241022",
-      temperature = 0,
-      max_tokens = 4096,
-    },
-    gemini = {
-      endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-      model = "gemini-2.0-flash",
-      temperature = 0,
-      max_tokens = 2048,
-    },
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o",             -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000,              -- Timeout in milliseconds, increase this for reasoning models
-      temperature = 0,
-      max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-    },
-    behaviour = {
-      enable_token_counting = false,
+    providers = {
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-5-sonnet-20241022",
+        extra_request_body = {
+          temperature = 0,
+          max_tokens = 4096,
+        },
+      },
+      gemini = {
+        endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+        model = "gemini-2.0-flash",
+        temperature = 0,
+        max_tokens = 2048,
+      },
+      -- openai = {
+      --   endpoint = "https://api.openai.com/v1",
+      --   model = "gpt-4o",             -- your desired model (or use gpt-4o, etc.)
+      --   timeout = 30000,              -- Timeout in milliseconds, increase this for reasoning models
+      --   temperature = 0,
+      --   max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+      --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      -- },
+      openai = { -- Use LM Studio as a local OpenAI-compatible API
+        endpoint = "http://localhost:1234/v1", -- LM Studio's API endpoint
+        model = "google/gemma-3-12b", -- The model name in LM Studio
+        extra_request_body = {
+          temperature = 0.1,
+          max_completion_tokens = 4096,
+        },
+      },
+      behaviour = {
+        enable_token_counting = false,
+      },
+
     },
   },
   keys = {
