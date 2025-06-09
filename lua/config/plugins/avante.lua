@@ -7,74 +7,25 @@ return {
     -- for example
     provider = "gemini",
     providers = {
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20241022",
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
         extra_request_body = {
-          temperature = 0,
-          max_tokens = 4096,
+          timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+          temperature = 0.75,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+          --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
         },
       },
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-        model = "gemini-2.0-flash",
-        temperature = 0,
-        max_tokens = 2048,
-      },
-      -- openai = {
-      --   endpoint = "https://api.openai.com/v1",
-      --   model = "gpt-4o",             -- your desired model (or use gpt-4o, etc.)
-      --   timeout = 30000,              -- Timeout in milliseconds, increase this for reasoning models
-      --   temperature = 0,
-      --   max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-      --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-      -- },
-      openai = { -- Use LM Studio as a local OpenAI-compatible API
-        endpoint = "http://localhost:1234/v1", -- LM Studio's API endpoint
-        model = "google/gemma-3-12b", -- The model name in LM Studio
+        model = "gemini-2.0-flash", -- your desired model
         extra_request_body = {
-          temperature = 0.1,
-          max_completion_tokens = 4096,
+          temperature = 0.75,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+          top_p = 0.95,
         },
       },
-      behaviour = {
-        enable_token_counting = false,
-      },
-
-    },
-  },
-  keys = {
-    {
-      "<leader>ac",
-      function()
-        require("avante.api").chat.open_chat_window()
-      end,
-      mode = "n",
-      desc = "Avante: Open Chat Window",
-    },
-    {
-      "<leader>ap",
-      function()
-        require("avante.api").prompt.run_prompt_with_visual_selection()
-      end,
-      mode = "v",
-      desc = "Avante: Run Prompt on Visual Selection",
-    },
-    {
-      "<leader>ag",
-      function()
-        require("avante.api").prompt.run_magic_prompt() -- Assuming a generic "generate" or "magic" prompt
-      end,
-      mode = "n",
-      desc = "Avante: Run Magic Prompt (e.g., generate code)",
-    },
-    {
-      "<leader>ae",
-      function()
-        require("avante.api").prompt.run_prompt_with_visual_selection({ default_prompt = "Explain this code" })
-      end,
-      mode = "v",
-      desc = "Avante: Explain Selected Code",
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -82,16 +33,17 @@ return {
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
-    "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
     "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-    "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-    "ibhagwan/fzf-lua",              -- for file_selector provider fzf
-    "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",        -- for providers='copilot'
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "stevearc/dressing.nvim", -- for input provider dressing
+    "folke/snacks.nvim", -- for input provider snacks
+    "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
