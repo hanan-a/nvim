@@ -78,6 +78,9 @@ return {
         vim.lsp.buf.format()
       end, { desc = 'Format current buffer with LSP' })
 
+      -- Add format keybinding
+      nmap('<leader>F', ':Format<CR>', '[F]ormat buffer')
+
       -- Special handling for Svelte
       if client.name == "svelte" then
         vim.api.nvim_create_autocmd("BufWritePost", {
