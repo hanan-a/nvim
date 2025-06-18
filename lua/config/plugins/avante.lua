@@ -19,7 +19,7 @@ return {
       },
       gemini = {
         endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-        model = "gemini-2.0-flash", -- your desired model
+        model = "gemini-2.5-flash", -- your desired model
         extra_request_body = {
           temperature = 0.75,
           max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
