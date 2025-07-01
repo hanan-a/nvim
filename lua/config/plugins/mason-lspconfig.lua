@@ -17,9 +17,18 @@ return {
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
       end
 
+      -- Create a function that lets us more easily define mappings specific
+      -- for LSP related items in normal and visual mode.
+      local nvmap = function(keys, func, desc)
+        if desc then
+          desc = 'LSP: ' .. desc
+        end
+        vim.keymap.set({'n', 'v'}, keys, func, { buffer = bufnr, desc = desc })
+      end
+
       -- LSP keymaps
       nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-      nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+      nvmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       nmap('gd', function()
         require('telescope.builtin').lsp_definitions({
           initial_mode = "normal",
