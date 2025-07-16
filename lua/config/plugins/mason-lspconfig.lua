@@ -67,6 +67,9 @@ return {
       -- See `:help K` for why this keymap
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
+      -- Show inline diagnostic error or message
+      nmap('<leader>d', vim.diagnostic.open_float, '[D]iagnostics')
+
       -- Lesser used LSP functionality
       nmap('gD', function()
         require('telescope.builtin').lsp_declarations({
