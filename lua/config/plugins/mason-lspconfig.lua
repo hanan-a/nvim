@@ -136,18 +136,18 @@ return {
       automatic_installation = true,
     })
 
-    -- Setup lspconfig
-    local lspconfig = require('lspconfig')
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
     -- Setup each server
     for server_name, server_config in pairs(servers) do
-      lspconfig[server_name].setup({
+      vim.lsp.config(server_name, {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = server_config,
       })
+
+      vim.lsp.enable({ server_name })
     end
   end
 }
