@@ -25,6 +25,7 @@ set.mouse = 'a'
 
 set.spelllang = 'en_us'
 set.spell = true
+set.spelloptions = "camel"
 
 -- set.shell = '/bin/bash'
 
