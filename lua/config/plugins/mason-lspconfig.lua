@@ -3,7 +3,6 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "neovim/nvim-lspconfig",
-    "hrsh7th/nvim-cmp",
   },
   config = function()
     -- LSP settings.
@@ -137,7 +136,7 @@ return {
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    -- blink.cmp works with standard LSP capabilities, no special setup needed
 
     -- Setup each server
     for server_name, server_config in pairs(servers) do
