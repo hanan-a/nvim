@@ -37,3 +37,6 @@ map('n', '<leader>A', 'ggVG', opts)
 map('n', '<leader>ay', 'ggVG"+y', opts)
 -- Clear buffer
 map('n', '<leader>cb', ':%d<CR>', opts)
+
+-- Clear search highlight with ESC
+map('n', '<ESC>', ':nohl<CR>', opts)
