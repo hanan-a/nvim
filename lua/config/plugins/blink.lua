@@ -1,8 +1,9 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 
+  dependencies = {
     'rafamadriz/friendly-snippets',
+    'ribru17/blink-cmp-spell',
     'L3MON4D3/LuaSnip', -- For snippet expansion
   },
   event = 'InsertEnter',
@@ -37,18 +38,60 @@ return {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 
+    providers = {
+      spell = {
+          name = 'Spell',
+          module = 'blink-cmp-spell',
+          opts = {
+            -- EXAMPLE: Only enable source in `@spell` captures, and disable it
+            -- in `@nospell` captures.
+            enable_in_context = function()
+              local curpos = vim.api.nvim_win_get_cursor(0)
+              local captures = vim.treesitter.get_captures_at_pos(
+                0,
+                curpos[1] - 1,
+                curpos[2] - 1
+              )
+              local in_spell_capture = false
+              for _, cap in ipairs(captures) do
+                if cap.capture == 'spell' then
+                  in_spell_capture = true
+                elseif cap.capture == 'nospell' then
+                  return false
+                end
+              end
+              return in_spell_capture
+            end,
+          },
+        },
+    },
+
     -- Rust fuzzy matcher for typo resistance and significantly better performance
-    fuzzy = { implementation = "prefer_rust_with_warning" },
+    fuzzy = {
+      implementation = "prefer_rust_with_warning",
+      sorts = {
+        function(a, b)
+          local sort = require('blink.cmp.fuzzy.sort')
+          if a.source_id == 'spell' and b.source_id == 'spell' then
+            return sort.label(a, b)
+          end
+        end,
+        -- This is the normal default order, which we fall back to
+        'score',
+        'kind',
+        'label',
+      },
+    },
   },
   opts_extend = { "sources.default" },
-  
+
   config = function(_, opts)
     local blink = require('blink.cmp')
     blink.setup(opts)
-    
+
     -- Integrate with LuaSnip for snippet expansion
     local luasnip = require('luasnip')
-    
+
     -- Custom keymap handling for Tab to work with LuaSnip
     -- This matches the nvim-cmp behavior: Tab navigates completion menu or jumps snippets
     vim.keymap.set({ 'i', 's' }, '<Tab>', function()
@@ -60,7 +103,7 @@ return {
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, false, true), 'n', false)
       end
     end, { desc = 'Next item or jump snippet' })
-    
+
     vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
       if blink.is_visible() then
         blink.select_prev()
@@ -70,7 +113,7 @@ return {
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<S-Tab>', true, false, true), 'n', false)
       end
     end, { desc = 'Previous item or jump snippet' })
-    
+
     -- Enter key handling - expand snippet if possible, otherwise confirm completion
     vim.keymap.set('i', '<CR>', function()
       if blink.is_visible() then
