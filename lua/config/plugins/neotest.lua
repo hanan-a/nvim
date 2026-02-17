@@ -1,108 +1,105 @@
-return {}
--- return {
---   "nvim-neotest/neotest",
---   lazy = true,
---   cmd = {
---     "Neotest",
---   },
---   dependencies = {
---     "nvim-neotest/nvim-nio",
---     "nvim-lua/plenary.nvim",
---     "antoinemadec/FixCursorHold.nvim",
---     "nvim-treesitter/nvim-treesitter",
---     "marilari88/neotest-vitest",
---     'nvim-neotest/neotest-jest',
---   },
---   keys = function()
---     local keys = {
---       {
---         "<leader>ntp",
---         function()
---           require('neotest').output_panel.toggle()
---         end,
---         desc = "Neotest Open Output Panel",
---       },
---       {
---         "<leader>nts",
---         function()
---           require('neotest').summary.toggle()
---         end,
---         desc = "Neotest Open Summary",
---       },
---       {
---         "<leader>ntc",
---         function()
---           local neotest = require('neotest')
---           neotest.output.close()
---           neotest.summary.close()
---           neotest.output_panel.close()
---         end,
---         desc = "Neotest Close Windows",
---       },
---       {
---         "<leader>tt",
---         function ()
---           require('neotest').summary.toggle()
---         end,
---         desc = "Neotest Open Summary",
---       },
---       {
---         "<leader>tdv",
---         function ()
---           local neotest = require('neotest')
---           neotest.summary.open()
---           neotest.run.run({
---             vitestCommand = 'npm test -- ',
---             jestCommand = 'node --inspect-brk node_modules/.bin/jest --runInBand',
---             strategy = 'dap',
---           })
---         end,
---         desc = "Debug Test",
---       },
---     }
---     return keys
---   end,
---   opts = function(_, opts)
---     if not opts then
---       opts = {
---         discovery = {
---           enabled = false,
---           concurrent = 0,
---         },
---       }
---     end
---     if not opts.adapters then
---       opts.adapters = {}
---     end
---     table.insert(opts.adapters, require('neotest-vitest')({
---       -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
---       filter_dir = function(name)
---         return name ~= "node_modules"
---       end,
---     }))
---     table.insert(opts.adapters, require('neotest-jest')({
---       jestCommand = "node --inspect-brk=9229 node_modules/.bin/jest --runInBand",
---       jestConfigFile = "custom.jest.config.ts",
---       env = { CI = true },
---       cwd = function()
---         return vim.fn.getcwd()
---       end,
---       dap = {
---         type = 'pwa-node',
---         request = 'launch',
---         port = 9229,
---         name = 'Debug Jest Tests',
---         args = {
---           '--no-cache',
---           '--runInBand',
---         },
---         console = 'integratedTerminal',
---         internalConsoleOptions = "neverOpen",
---         rootPath = "${workspaceFolder}",
---         sourceMaps = true,
---         skipFiles = { '<node_internals>/**/*.js' },
---       }
---     }))
---     return opts
---   end,
--- }
+return {
+  "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "nvim-lua/plenary.nvim",
+    "antoinemadec/FixCursorHold.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-neotest/neotest-jest",
+    "marilari88/neotest-vitest",
+  },
+  keys = {
+    {
+      "<leader>tt",
+      function() require("neotest").summary.toggle() end,
+      desc = "Toggle Test Summary",
+    },
+    {
+      "<leader>tr",
+      function() require("neotest").run.run() end,
+      desc = "Run Nearest Test",
+    },
+    {
+      "<leader>tf",
+      function() require("neotest").run.run(vim.fn.expand("%")) end,
+      desc = "Run Test File",
+    },
+    {
+      "<leader>td",
+      function() require("neotest").run.run({ strategy = "dap" }) end,
+      desc = "Debug Nearest Test",
+    },
+    {
+      "<leader>tD",
+      function() require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" }) end,
+      desc = "Debug Test File",
+    },
+    {
+      "<leader>ts",
+      function() require("neotest").run.stop() end,
+      desc = "Stop Test",
+    },
+    {
+      "<leader>to",
+      function() require("neotest").output.open({ enter = true }) end,
+      desc = "Show Test Output",
+    },
+    {
+      "<leader>tp",
+      function() require("neotest").output_panel.toggle() end,
+      desc = "Toggle Output Panel",
+    },
+  },
+  config = function()
+    -- NOTE: neotest-playwright is intentionally omitted. Playwright debugging is
+    -- handled via DAP configurations in dap.lua instead of a neotest adapter.
+    require("neotest").setup({
+      adapters = {
+        require("neotest-jest")({
+          jestCommand = "npm test --",
+          jestConfigFile = "jest.config.js",
+          env = { CI = true },
+          cwd = function()
+            return vim.fn.getcwd()
+          end,
+          dap = {
+            type = "pwa-node",
+            request = "launch",
+            name = "Debug Jest Tests",
+            runtimeExecutable = "node",
+            runtimeArgs = {
+              "./node_modules/.bin/jest",
+              "--runInBand",
+              "--no-coverage",
+              "--no-cache",
+              "--watchAll=false",
+            },
+            rootPath = "${workspaceFolder}",
+            cwd = "${workspaceFolder}",
+            console = "integratedTerminal",
+            internalConsoleOptions = "neverOpen",
+            sourceMaps = true,
+            skipFiles = { "<node_internals>/**", "node_modules/**" },
+          },
+        }),
+        require("neotest-vitest")({
+          filter_dir = function(name)
+            return name ~= "node_modules"
+          end,
+        }),
+      },
+      discovery = {
+        enabled = false,
+        concurrent = 0,
+      },
+      diagnostic = {
+        enabled = true,
+      },
+      status = {
+        enabled = true,
+        virtual_text = true,
+        signs = true,
+      },
+    })
+  end,
+}
