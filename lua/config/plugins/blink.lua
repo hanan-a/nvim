@@ -36,15 +36,11 @@ return {
     -- Note: copilot and tabnine work independently via their own plugins
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-
-    providers = {
-      spell = {
+      providers = {
+        spell = {
           name = 'Spell',
           module = 'blink-cmp-spell',
           opts = {
-            -- EXAMPLE: Only enable source in `@spell` captures, and disable it
-            -- in `@nospell` captures.
             enable_in_context = function()
               local curpos = vim.api.nvim_win_get_cursor(0)
               local captures = vim.treesitter.get_captures_at_pos(
@@ -64,6 +60,7 @@ return {
             end,
           },
         },
+      },
     },
 
     -- Rust fuzzy matcher for typo resistance and significantly better performance
