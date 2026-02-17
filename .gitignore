@@ -3,3 +3,4 @@ pack/
 *.vim
 lazy-lock.json
 .luarc.json
+tmp/
