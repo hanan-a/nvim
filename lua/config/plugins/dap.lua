@@ -1,202 +1,241 @@
-
--- Debug Adapter Protocol client implementation
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    -- Provides a beautiful UI for nvim-dap
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+    "nvim-neotest/nvim-nio",
+  },
+  keys = {
+    -- Breakpoints
+    { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
     {
-      "rcarriga/nvim-dap-ui",
-      dependencies = { "nvim-neotest/nvim-nio" }, -- Required dependency for nvim-dap-ui
-      config = function()
-        local dapui = require("dapui")
-        dapui.setup({
-          -- Layout configuration (customize as needed)
-          layouts = {
-            {
-              elements = {
-                { id = "scopes", size = 0.25 },
-                { id = "breakpoints", size = 0.25 },
-                { id = "stacks", size = 0.25 },
-                { id = "watches", size = 0.25 },
-              },
-              size = 40,
-              position = "left",
-            },
-            {
-              elements = {
-                { id = "repl", size = 0.5 },
-                { id = "console", size = 0.5 },
-              },
-              size = 10,
-              position = "bottom",
-            },
-          },
-          -- Other dapui settings can go here
-          -- e.g., floating = { max_height = 0.9, max_width = 0.9 }
-        })
-
-        local dap = require("dap")
-        -- Automatically open/close dap-ui when debugging starts/stops
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-          dapui.open()
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-          dapui.close()
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-          dapui.close()
-        end
-      end,
+      "<leader>dB",
+      function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
+      desc = "Conditional Breakpoint",
     },
-    -- Add other DAP adapter/configuration plugins here if needed
-    -- e.g., { "theHamsta/nvim-dap-virtual-text" }
-    -- Installs and configures the Node debugger adapter for JS/TS
     {
-      "mxsdev/nvim-dap-vscode-js",
-      dependencies = { "mfussenegger/nvim-dap" },
-      opts = {
-        -- Path to node executable. Defaults to $NODE_PATH, and then "node"
-        -- node_path = "node",
+      "<leader>dL",
+      function() require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: ")) end,
+      desc = "Log Point",
+    },
 
-        -- Path to debugger package. Defaults to $NODE_PATH, and then ~/.local/share/nvim/mason/packages/js-debug-adapter
-        debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
+    -- Controls
+    { "<leader>dc", function() require("dap").continue() end, desc = "Continue / Start Debugging" },
+    { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
+    { "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
+    { "<leader>do", function() require("dap").step_over() end, desc = "Step Over" },
+    { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out" },
+    { "<leader>dj", function() require("dap").down() end, desc = "Down in Stack" },
+    { "<leader>dk", function() require("dap").up() end, desc = "Up in Stack" },
+    { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
 
-        -- Command to use to launch the debug server. Takes precedence over node_path and debugger_path
-        -- debugger_cmd = { "node" },
+    -- Session Management
+    { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate Session" },
+    { "<leader>dr", function() require("dap").restart() end, desc = "Restart Session" },
+    { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last Configuration" },
 
-        -- which adapters to register in nvim-dap
-        adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    -- UI
+    { "<leader>du", function() require("dapui").toggle() end, desc = "Toggle Debug UI" },
+    { "<leader>de", function() require("dapui").eval() end, mode = { "n", "v" }, desc = "Evaluate Expression" },
+    {
+      "<leader>dE",
+      function() require("dapui").eval(vim.fn.input("Expression: ")) end,
+      desc = "Evaluate Input",
+    },
 
-        -- Path for file logging
-        -- log_file_path = "(stdpath cache)/dap_vscode_js.log",
+    -- REPL
+    { "<leader>dR", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
 
-        -- Logging level for output to file. Set to false to disable logging.
-        -- log_level = false,
-
-        -- Logging level for output to console. Set to false to disable console output.
-        -- log_console_level = vim.log.levels.ERROR,
-      },
+    -- Hover / Scopes
+    { "<leader>dh", function() require("dap.ui.widgets").hover() end, desc = "Hover Variables" },
+    {
+      "<leader>ds",
+      function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.scopes)
+      end,
+      desc = "Scopes",
     },
   },
   config = function()
     local dap = require("dap")
-    local map = vim.keymap.set
-    local opts = { silent = true }
 
-    -- Basic debugging keymaps
-    map("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle Breakpoint", silent = true })
-    map("n", "<F5>", dap.continue, { desc = "DAP: Continue", silent = true })
-    map("n", "<F10>", dap.step_over, { desc = "DAP: Step Over", silent = true })
-    map("n", "<F7>", dap.step_into, { desc = "DAP: Step Into", silent = true })
-    map("n", "<F9>", dap.step_out, { desc = "DAP: Step Out", silent = true })
-    map("n", "<leader>dr", dap.repl.open, { desc = "DAP: Open REPL", silent = true })
-    map("n", "<leader>dl", dap.run_last, { desc = "DAP: Run Last", silent = true })
-    map("n", "<leader>dt", dap.terminate, { desc = "DAP: Terminate", silent = true })
-
-    -- Keymaps for dap-ui
-    map("n", "<leader>dui", require("dapui").toggle, { desc = "DAP UI: Toggle", silent = true })
-    map("n", "<leader>due", require("dapui").eval, { desc = "DAP UI: Evaluate", silent = true }) -- Evaluate expression under cursor
-
-    -- Define adapters and configurations for other languages below
-
-    -- Setup JS/TS debugging via nvim-dap-vscode-js
-    require("dap-vscode-js").setup({
-      -- Path to node executable. Defaults to $NODE_PATH, and then "node"
-      -- node_path = "node",
-
-      -- Path to debugger package. Defaults to $NODE_PATH, and then ~/.local/share/nvim/mason/packages/js-debug-adapter
-      debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",
-
-      -- Command to use to launch the debug server. Takes precedence over node_path and debugger_path
-      -- debugger_cmd = { "node" },
-
-      -- which adapters to register in nvim-dap
-      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-
-      -- Path for file logging
-      -- log_file_path = "(stdpath cache)/dap_vscode_js.log",
-
-      -- Logging level for output to file. Set to false to disable logging.
-      -- log_level = false,
-
-      -- Logging level for output to console. Set to false to disable console output.
-      -- log_console_level = vim.log.levels.ERROR,
-    })
-
-    -- Define configurations for JavaScript and TypeScript (including Jest)
-    for _, language in ipairs({ "typescript", "javascript" }) do
-      dap.configurations[language] = {
-        -- Debug single file (Node)
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-        },
-        -- Attach to running process (Node)
-        {
-          type = "pwa-node",
-          request = "attach",
-          name = "Attach",
-          processId = require("dap.utils").pick_process,
-          cwd = "${workspaceFolder}",
-        },
-        -- Debug Jest tests
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Debug Jest Tests",
-          -- trace = true, -- include debugger info
-          runtimeExecutable = "node",
-          runtimeArgs = {
-            "./node_modules/jest/bin/jest.js",
-            "--runInBand",
-          },
-          rootPath = "${workspaceFolder}",
-          cwd = "${workspaceFolder}",
-          console = "integratedTerminal",
-          internalConsoleOptions = "neverOpen",
-        },
-        -- Debug Jest tests for the current file
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "Debug Current Jest File",
-          -- trace = true, -- include debugger info
-          runtimeExecutable = "node",
-          runtimeArgs = {
-            "./node_modules/jest/bin/jest.js",
-            "${fileBasename}",
-          },
-          rootPath = "${workspaceFolder}",
-          cwd = "${workspaceFolder}",
-          console = "integratedTerminal",
-          internalConsoleOptions = "neverOpen",
-        },
-      }
+    ---------------------------------------------------------------------------
+    -- Adapter: vscode-js-debug via Mason
+    ---------------------------------------------------------------------------
+    local js_debug_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter"
+    if vim.fn.isdirectory(js_debug_path) == 0 then
+      vim.notify(
+        "js-debug-adapter is not installed. Run :MasonInstall js-debug-adapter",
+        vim.log.levels.WARN
+      )
+      return
     end
 
-    -- Example for Python (requires debugpy: :MasonInstall python-debug-adapter)
-    -- dap.adapters.python = {
-    --   type = 'executable',
-    --   command = require("mason-registry").get_package("python-debug-adapter"):get_install_path() .. "/venv/bin/python",
-    --   args = { '-m', 'debugpy.adapter' }
-    -- }
-    --
-    -- dap.configurations.python = {
-    --   {
-    --     type = 'python',
-    --     request = 'launch',
-    --     name = "Launch file",
-    --     program = "${file}",
-    --     pythonPath = function()
-    --       -- Add logic to detect virtual envs, etc.
-    --       return '/usr/bin/python' -- Or your default python
-    --     end,
-    --   },
-    -- }
+    dap.adapters["pwa-node"] = {
+      type = "server",
+      host = "localhost",
+      port = "${port}",
+      executable = {
+        command = "node",
+        args = {
+          js_debug_path .. "/js-debug/src/dapDebugServer.js",
+          "${port}",
+        },
+      },
+    }
 
-    print("nvim-dap configured with JS/TS/Jest support.")
+    -- Aliases for compatibility
+    dap.adapters["node"] = dap.adapters["pwa-node"]
+    dap.adapters["pwa-chrome"] = dap.adapters["pwa-node"]
+
+    ---------------------------------------------------------------------------
+    -- Debug Configurations
+    ---------------------------------------------------------------------------
+    dap.configurations.javascript = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch Current File (Node)",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        sourceMaps = true,
+        protocol = "inspector",
+        console = "integratedTerminal",
+      },
+      {
+        type = "pwa-node",
+        request = "attach",
+        name = "Attach to Node Process",
+        processId = require("dap.utils").pick_process,
+        cwd = "${workspaceFolder}",
+        sourceMaps = true,
+        protocol = "inspector",
+      },
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Debug Jest Tests",
+        runtimeExecutable = "node",
+        runtimeArgs = {
+          "./node_modules/.bin/jest",
+          "--runInBand",
+          "--no-coverage",
+          "--no-cache",
+          "--watchAll=false",
+        },
+        rootPath = "${workspaceFolder}",
+        cwd = "${workspaceFolder}",
+        console = "integratedTerminal",
+        internalConsoleOptions = "neverOpen",
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+      },
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Debug Jest Current File",
+        runtimeExecutable = "node",
+        runtimeArgs = {
+          "./node_modules/.bin/jest",
+          "${file}",
+          "--runInBand",
+          "--no-coverage",
+          "--no-cache",
+          "--watchAll=false",
+        },
+        rootPath = "${workspaceFolder}",
+        cwd = "${workspaceFolder}",
+        console = "integratedTerminal",
+        internalConsoleOptions = "neverOpen",
+        sourceMaps = true,
+        skipFiles = { "<node_internals>/**", "node_modules/**" },
+      },
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Debug Playwright Tests",
+        runtimeExecutable = "node",
+        runtimeArgs = {
+          "./node_modules/.bin/playwright",
+          "test",
+          "--debug",
+        },
+        rootPath = "${workspaceFolder}",
+        cwd = "${workspaceFolder}",
+        console = "integratedTerminal",
+        internalConsoleOptions = "neverOpen",
+        sourceMaps = true,
+      },
+      {
+        type = "pwa-chrome",
+        request = "launch",
+        name = "Launch Chrome",
+        url = "http://localhost:3000",
+        webRoot = "${workspaceFolder}",
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        skipFiles = { "<node_internals>/**" },
+      },
+      {
+        type = "pwa-chrome",
+        request = "attach",
+        name = "Attach to Chrome",
+        port = 9222,
+        webRoot = "${workspaceFolder}",
+        sourceMaps = true,
+        protocol = "inspector",
+      },
+    }
+
+    -- TypeScript / React share the same configurations
+    dap.configurations.typescript = dap.configurations.javascript
+    dap.configurations.typescriptreact = dap.configurations.javascript
+    dap.configurations.javascriptreact = dap.configurations.javascript
+
+    ---------------------------------------------------------------------------
+    -- Signs
+    ---------------------------------------------------------------------------
+    vim.fn.sign_define("DapBreakpoint", {
+      text = "🔴",
+      texthl = "DapBreakpoint",
+      linehl = "",
+      numhl = "DapBreakpoint",
+    })
+    vim.fn.sign_define("DapBreakpointCondition", {
+      text = "🟡",
+      texthl = "DapBreakpoint",
+      linehl = "",
+      numhl = "DapBreakpoint",
+    })
+    vim.fn.sign_define("DapBreakpointRejected", {
+      text = "⭕",
+      texthl = "DapBreakpoint",
+      linehl = "",
+      numhl = "DapBreakpoint",
+    })
+    vim.fn.sign_define("DapLogPoint", {
+      text = "📝",
+      texthl = "DapLogPoint",
+      linehl = "",
+      numhl = "DapLogPoint",
+    })
+    vim.fn.sign_define("DapStopped", {
+      text = "▶️",
+      texthl = "DapStopped",
+      linehl = "DapStoppedLine",
+      numhl = "DapStopped",
+    })
+
+    ---------------------------------------------------------------------------
+    -- Which-key group label
+    ---------------------------------------------------------------------------
+    local wk_ok, wk = pcall(require, "which-key")
+    if wk_ok then
+      wk.add({
+        { "<leader>d", group = "Debug" },
+      })
+    end
   end,
 }
