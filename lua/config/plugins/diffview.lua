@@ -4,7 +4,7 @@ return {
   'sindrets/diffview.nvim',
   lazy = 'VeryLazy',
   keys = {
-    { '<leader>dv', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
+    { '<leader>gv', '<cmd>DiffviewOpen<cr>', desc = 'Open Diffview' },
     {
       '<leader>cm',
       function()
@@ -13,7 +13,7 @@ return {
       end,
       desc = 'Diffview compare HEAD to default branch',
     },
-    { '<leader>dc', '<cmd>DiffviewClose<cr>', desc = 'Close Diffview' },
+    { '<leader>gV', '<cmd>DiffviewClose<cr>', desc = 'Close Diffview' },
     { '<leader>gh', '<cmd>DiffviewFileHistory<cr>', desc = 'File History' },
   },
 }
