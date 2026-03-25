@@ -2,7 +2,8 @@ local ZBIRENBAUM = {
   "zbirenbaum/copilot.lua",
   enabled = true,
   lazy = true,
-  event = "BufRead",
+  event = "InsertEnter",
+  cmd = "Copilot",
   opts = {
     suggestion = {
       enabled = true,
