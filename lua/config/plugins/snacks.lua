@@ -72,5 +72,6 @@ return {
     { "<C-f>", function() Snacks.picker.git_files({ layout = { preset = "ivy" }}) end, desc = "Find Git Files" },
     { "<leader>fr", function() Snacks.picker.recent({ focus = "list", layout = { preset = "ivy" }}) end, desc = "Recent" },
     { "<leader>i", function() Snacks.explorer({ layout = { preset = "sidebar" }}) end, desc = "File Explorer" },
+    { "<leader>go", function() Snacks.gitbrowse() end, desc = "Open in GitHub", mode = { "n", "v" } },
   }
 }
