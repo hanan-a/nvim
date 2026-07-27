@@ -16,6 +16,13 @@ return {
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
       end
 
+      local vmap = function(keys, func, desc)
+        if desc then
+          desc = 'LSP: ' .. desc
+        end
+        vim.keymap.set('v', keys, func, { buffer = bufnr, desc = desc })
+      end
+
       -- Create a function that lets us more easily define mappings specific
       -- for LSP related items in normal and visual mode.
       local nvmap = function(keys, func, desc)
@@ -84,13 +91,18 @@ return {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, '[W]orkspace [L]ist Folders')
 
+      local format = function()
+        vim.lsp.buf.format({ async = true })
+      end
+
       -- Create a command `:Format` local to the LSP buffer
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        vim.lsp.buf.format()
-      end, { desc = 'Format current buffer with LSP' })
+        format()
+      end, { desc = 'Format current buffer/selection with LSP' })
 
-      -- Add format keybinding
-      nmap('<leader>F', ':Format<CR>', '[F]ormat buffer')
+      -- Format whole buffer (normal) or visual selection (visual)
+      nmap('<leader>F', format, '[F]ormat buffer')
+      vmap('<leader>F', format, '[F]ormat selection')
 
       -- Special handling for Svelte
       if client.name == "svelte" then
