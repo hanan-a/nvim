@@ -1,4 +1,9 @@
 Snacks = Snacks
+
+local function tuicr(...)
+  Snacks.terminal({ "tuicr", ... })
+end
+
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -73,5 +78,18 @@ return {
     { "<leader>fr", function() Snacks.picker.recent({ focus = "list", layout = { preset = "ivy" }}) end, desc = "Recent" },
     { "<leader>i", function() Snacks.explorer({ layout = { preset = "sidebar" }}) end, desc = "File Explorer" },
     { "<leader>go", function() Snacks.gitbrowse() end, desc = "Open in GitHub", mode = { "n", "v" } },
+    { "<leader>gt", function() tuicr() end, desc = "TUICR: pick commits" },
+    { "<leader>gT", function() tuicr("-w") end, desc = "TUICR: working tree" },
+    {
+      "<leader>gP",
+      function()
+        local pr = vim.fn.input("PR number: ")
+        if pr == "" then
+          return
+        end
+        tuicr("pr", pr)
+      end,
+      desc = "TUICR: GitHub PR",
+    },
   }
 }
